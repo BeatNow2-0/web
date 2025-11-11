@@ -1,7 +1,6 @@
 // src/Screens/Landing Page/LandingPage.tsx
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './LandingPage.css';
 import Header from '../../Layout/Header/Header';
@@ -107,7 +106,7 @@ function Landing() {
     };
 
     return (
-        <div className="landing-page">
+        <div className="landing-page" id="inicio">
             <Header />
             <div className="landing-background" aria-hidden="true">
                 <div className="orb orb-one" />
@@ -117,6 +116,7 @@ function Landing() {
 
             <main className="landing-main">
                 <motion.section
+                    id="hero"
                     className="hero"
                     initial={fadeInUp.initial}
                     whileInView={fadeInUp.whileInView}
@@ -137,9 +137,9 @@ function Landing() {
                             <button type="button" className="primary-button" onClick={handleDownload}>
                                 {isMobile ? 'Descargar app Android' : 'Probar BeatNow ahora'}
                             </button>
-                            <Link className="ghost-button" to="/register">
-                                Crear cuenta gratuita
-                            </Link>
+                            <a className="ghost-button" href="#features">
+                                Ver funcionalidades
+                            </a>
                         </div>
                         <div className="hero-meta">
                             <span>Sin tarjetas. Cancelación cuando quieras.</span>
@@ -183,6 +183,7 @@ function Landing() {
                 </motion.section>
 
                 <motion.section
+                    id="features"
                     className="features"
                     initial={fadeInUp.initial}
                     whileInView={fadeInUp.whileInView}
@@ -213,6 +214,7 @@ function Landing() {
                 </motion.section>
 
                 <motion.section
+                    id="workflow"
                     className="workflow"
                     initial={fadeInUp.initial}
                     whileInView={fadeInUp.whileInView}
@@ -240,6 +242,7 @@ function Landing() {
                 </motion.section>
 
                 <motion.section
+                    id="seguridad"
                     className="security"
                     initial={fadeInUp.initial}
                     whileInView={fadeInUp.whileInView}
@@ -270,6 +273,7 @@ function Landing() {
                 </motion.section>
 
                 <motion.section
+                    id="descargar"
                     className="download"
                     initial={fadeInUp.initial}
                     whileInView={fadeInUp.whileInView}
@@ -288,9 +292,9 @@ function Landing() {
                                 <button type="button" className="primary-button" onClick={handleDownload}>
                                     Descargar BeatNow
                                 </button>
-                                <Link className="ghost-button" to="/login">
-                                    Iniciar sesión
-                                </Link>
+                                <a className="ghost-button" href="#features">
+                                    Conocer más
+                                </a>
                             </div>
                         </div>
                         <div className="download-visual">
@@ -316,8 +320,8 @@ function Landing() {
                         <p>Impulsamos la próxima generación de productores y sellos independientes.</p>
                     </div>
                     <div className="footer-links">
-                        <Link to="/login">Iniciar sesión</Link>
-                        <Link to="/register">Crear cuenta</Link>
+                        <a href="#features">Funciones</a>
+                        <a href="#seguridad">Seguridad</a>
                         <span className="footer-pill">Seguridad reforzada 2024</span>
                     </div>
                 </div>
