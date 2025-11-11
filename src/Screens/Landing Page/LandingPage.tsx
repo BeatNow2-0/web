@@ -23,61 +23,77 @@ const fadeIn = {
     viewport: { once: true, amount: 0.2 },
 };
 
+// === NUEVO CONTENIDO: copia alineada con el propósito real de BeatNow ===
 const featureHighlights = [
     {
-        title: 'Inteligencia de audio en tiempo real',
+        title: 'Feed infinito tipo TikTok',
         description:
-            'Analiza tempo, armonías y energía al instante para centrarte en crear mientras la plataforma optimiza cada pista.',
+            'Desliza y descubre instrumentales rápidamente. Alterna entre “Para ti” y “Siguiendo” y guarda lo que te gusta.',
     },
     {
-        title: 'Colaboración distribuida',
+        title: 'Búsqueda y filtros avanzados',
         description:
-            'Comparte sesiones seguras con tu equipo, comenta versiones y aprueba masters desde cualquier dispositivo.',
+            'Refina por género, precio, BPM, mood e instrumentos. Activa y elimina filtros al vuelo para afinar resultados.',
     },
     {
-        title: 'Distribución sin fricción',
+        title: 'Gestor de letras vinculado a beats',
         description:
-            'Publica en tus plataformas favoritas con metadatos generados automáticamente y un pipeline listo para sellos.',
+            'Escribe y guarda letras asociándolas al beat. Recupera borradores y versiones sin perder el hilo creativo.',
+    },
+    {
+        title: 'Reproductor integrado',
+        description:
+            'Compón sobre el beat con controles de play/pausa, seek y salto de patrones mientras escribes.',
+    },
+    {
+        title: 'Modo Teleprompter',
+        description:
+            'Configura patrones al tempo del beat y canta sin tocar la pantalla. Ideal para ensayos y grabaciones.',
+    },
+    {
+        title: 'Espacio equitativo para productores y artistas',
+        description:
+            'Los productores suben sus bases (web); los artistas descubren, practican y conectan desde el móvil.',
     },
 ];
 
 const workflowSteps = [
     {
         step: '01',
-        title: 'Captura tu idea',
-        description: 'Sube stems, loops o voces y deja que BeatNow genere vistas previas inteligentes para cada take.',
+        title: 'Explora y filtra',
+        description: 'Desliza en el feed infinito o usa búsqueda con filtros (género, BPM, mood, precio, instrumentos).',
     },
     {
         step: '02',
-        title: 'Perfecciona con IA',
-        description: 'Utiliza mastering asistido, mezclas sugeridas y automatización de efectos basada en tu estilo.',
+        title: 'Escribe y practica',
+        description: 'Abre el editor de letras con player integrado. Guarda borradores asociados al beat.',
     },
     {
         step: '03',
-        title: 'Lanza con confianza',
-        description: 'Exporta masters listos con control de versiones y reportes de calidad para tu sello o distribuidora.',
+        title: 'Interpreta y comparte',
+        description: 'Activa el Teleprompter a tempo y comparte progreso o colabora con productores.',
     },
 ];
 
 const securityHighlights = [
     {
-        title: 'Autenticación protegida',
-        description: 'Tokens cifrados y caducidad automática para mantener tus sesiones privadas a salvo.',
+        title: 'Autenticación y cuentas',
+        description: 'Inicio de sesión/registro seguro y gestión de sesiones. Opcional: acceso con Google.',
     },
     {
-        title: 'Infraestructura endurecida',
-        description: 'Procesos aislados, cifrado TLS extremo a extremo y monitoreo continuo de integridad.',
+        title: 'Autoría y subidas',
+        description: 'Propiedades del beat y metadatos básicos para reconocer al productor y sus licencias.',
     },
     {
-        title: 'Control de acceso granular',
-        description: 'Define roles por proyecto y revisa auditorías detalladas desde tu panel de control.',
+        title: 'Privacidad de borradores',
+        description: 'Letras, notas y versiones se guardan en privado hasta que decidas compartirlas.',
     },
 ];
 
 const statHighlights = [
-    { value: '50K+', label: 'Proyectos renderizados' },
-    { value: '120', label: 'Países con creadores activos' },
-    { value: '99.99%', label: 'Disponibilidad en la nube' },
+    { value: '∞', label: 'Scroll de beats' },
+    { value: 'Android / iOS / Web', label: 'Plataformas' },
+    { value: 'Filtros', label: 'Género · BPM · Mood · Precio · Instrumentos' },
 ];
 
 function Landing() {
@@ -124,14 +140,14 @@ function Landing() {
                     viewport={fadeInUp.viewport}
                 >
                     <div className="hero-content">
-                        <span className="hero-eyebrow">Producción musical impulsada por IA</span>
+                        <span className="hero-eyebrow">La app para la música urbana</span>
                         <h1>
-                            Diseña paisajes sonoros
-                            <span className="gradient-text"> a la velocidad de tus ideas.</span>
+                            Encuentra bases, escribe letras
+                            <span className="gradient-text"> y lleva tus barras al siguiente nivel.</span>
                         </h1>
                         <p>
-                            BeatNow combina análisis inteligente, colaboración remota y una infraestructura segura para que
-                            transformes ideas en lanzamientos profesionales sin salir de la plataforma.
+                            BeatNow nace para artistas y productores emergentes: un feed infinito de beats, un editor de letras con
+                            reproductor integrado y un modo Teleprompter para interpretar sin perder el ritmo.
                         </p>
                         <div className="hero-actions">
                             <button type="button" className="primary-button" onClick={handleDownload}>
@@ -142,8 +158,8 @@ function Landing() {
                             </a>
                         </div>
                         <div className="hero-meta">
-                            <span>Sin tarjetas. Cancelación cuando quieras.</span>
-                            <span>Infraestructura auditada y cifrada.</span>
+                            <span>Gratis para empezar. Sin tarjetas.</span>
+                            <span>Tu contenido, bajo tu control.</span>
                         </div>
                     </div>
 
@@ -154,7 +170,7 @@ function Landing() {
                         transition={{ duration: 0.8, ease: 'easeOut' }}
                     >
                         <div className="hero-visual-card">
-                            <img src={studio} alt="Estudio de producción con BeatNow" />
+                            <img src={studio} alt="Artista componiendo con BeatNow" />
                             <div className="hero-visual-glow" />
                         </div>
                         <motion.div
@@ -191,11 +207,11 @@ function Landing() {
                     viewport={fadeInUp.viewport}
                 >
                     <div className="section-header">
-                        <span className="section-eyebrow">Lo que nos hace diferentes</span>
-                        <h2>Un ecosistema completo para productores modernos</h2>
+                        <span className="section-eyebrow">Hecha para el proceso creativo</span>
+                        <h2>Una plataforma social para artistas y productores</h2>
                         <p>
-                            Todas las herramientas que necesitas para colaborar, versionar y publicar con la tranquilidad de
-                            un flujo protegido extremo a extremo.
+                            Encuentra bases, redacta y guarda letras, practica con teleprompter y conecta con productores. Todo en
+                            un flujo simple y rápido.
                         </p>
                     </div>
                     <div className="features-grid">
@@ -213,6 +229,25 @@ function Landing() {
                     </div>
                 </motion.section>
 
+                {/* Objetivos del proyecto */}
+                <motion.section
+                    id="objetivos"
+                    className="objectives"
+                    initial={fadeInUp.initial}
+                    whileInView={fadeInUp.whileInView}
+                    transition={fadeInUp.transition}
+                    viewport={fadeInUp.viewport}
+                >
+                    <div className="section-header">
+                        <span className="section-eyebrow">Objetivos</span>
+                        <h2>Una herramienta centrada en artistas</h2>
+                        <p>
+                            Encontrar beats rápido, redactar y guardar letras de forma práctica, y componer con un reproductor
+                            integrado y un modo Teleprompter que facilite la interpretación.
+                        </p>
+                    </div>
+                </motion.section>
+
                 <motion.section
                     id="workflow"
                     className="workflow"
@@ -223,7 +258,7 @@ function Landing() {
                 >
                     <div className="section-header">
                         <span className="section-eyebrow">Cómo funciona</span>
-                        <h2>De la inspiración al lanzamiento en tres pasos</h2>
+                        <h2>Del descubrimiento a la interpretación</h2>
                     </div>
                     <div className="workflow-grid">
                         {workflowSteps.map((step) => (
@@ -241,6 +276,25 @@ function Landing() {
                     </div>
                 </motion.section>
 
+                {/* Diferenciación */}
+                <motion.section
+                    id="diferenciacion"
+                    className="differentiators"
+                    initial={fadeInUp.initial}
+                    whileInView={fadeInUp.whileInView}
+                    transition={fadeInUp.transition}
+                    viewport={fadeInUp.viewport}
+                >
+                    <div className="section-header">
+                        <span className="section-eyebrow">¿Por qué BeatNow?</span>
+                        <h2>Velocidad, foco en artistas y orden</h2>
+                        <p>
+                            Interfaz de swipe para decidir en segundos, enfoque en las necesidades del artista (no solo del productor)
+                            y gestión ordenada de letras vinculadas a cada beat.
+                        </p>
+                    </div>
+                </motion.section>
+
                 <motion.section
                     id="seguridad"
                     className="security"
@@ -250,11 +304,10 @@ function Landing() {
                     viewport={fadeInUp.viewport}
                 >
                     <div className="section-header">
-                        <span className="section-eyebrow">Seguridad de nivel empresarial</span>
-                        <h2>Protegemos tus masters y tus datos</h2>
+                        <span className="section-eyebrow">Tu trabajo es tuyo</span>
+                        <h2>Privado mientras creas. Compartido cuando quieras.</h2>
                         <p>
-                            Diseñamos BeatNow con controles de seguridad activos desde la autenticación hasta la distribución
-                            final. Nada sale al aire sin tu permiso.
+                            Diseñada para cuidar letras, borradores y subidas de productores con controles sencillos y claros.
                         </p>
                     </div>
                     <div className="security-grid">
@@ -283,10 +336,10 @@ function Landing() {
                     <div className="download-card">
                         <div className="download-copy">
                             <span className="section-eyebrow">Empieza hoy mismo</span>
-                            <h2>Experimenta la plataforma completa desde tu móvil</h2>
+                            <h2>Encuentra tu próximo beat en minutos</h2>
                             <p>
-                                Descarga la app para Android y sincroniza al instante con la versión web. Tus ajustes, presets y
-                                proyectos viven en un entorno cifrado y sincronizado.
+                                Descarga la app para Android y guarda tus letras, favoritos y sesiones. Todo sincronizado con tu
+                                cuenta.
                             </p>
                             <div className="download-actions">
                                 <button type="button" className="primary-button" onClick={handleDownload}>
@@ -317,12 +370,16 @@ function Landing() {
                 <div className="landing-footer-content">
                     <div className="footer-brand">
                         <img src={logo} alt="BeatNow" />
-                        <p>Impulsamos la próxima generación de productores y sellos independientes.</p>
+                        <p>
+                            Una app pensada para la comunidad urbana: productores y artistas creando juntos.
+                        </p>
                     </div>
                     <div className="footer-links">
                         <a href="#features">Funciones</a>
-                        <a href="#seguridad">Seguridad</a>
-                        <span className="footer-pill">Seguridad reforzada 2024</span>
+                        <a href="#objetivos">Objetivos</a>
+                        <a href="#diferenciacion">Diferenciación</a>
+                        <a href="#seguridad">Privacidad</a>
+                        <span className="footer-pill">Feed + Letras + Teleprompter</span>
                     </div>
                 </div>
             </footer>
