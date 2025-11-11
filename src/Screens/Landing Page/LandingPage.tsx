@@ -366,6 +366,15 @@ function Landing() {
                 </motion.section>
             </main>
 
+            <div className="mobile-download-bar">
+                <button type="button" className="primary-button" onClick={handleDownload}>
+                    Descargar BeatNow
+                </button>
+                <a className="ghost-button" href="#features">
+                    Ver funcionalidades
+                </a>
+            </div>
+
             <footer className="landing-footer">
                 <div className="landing-footer-content">
                     <div className="footer-brand">
