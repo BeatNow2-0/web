@@ -165,24 +165,78 @@ section {
 }
 
 .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 0.5rem;
+}
+
+.hero-visual-glow {
+    position: absolute;
+    inset: auto;
+    width: clamp(220px, 38vw, 320px);
+    height: clamp(220px, 38vw, 320px);
+    filter: blur(120px);
+    opacity: 0.45;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.hero-visual-glow-one {
+    background: rgba(124, 58, 237, 0.6);
+    right: 12%;
+    top: 10%;
+}
+
+.hero-visual-glow-two {
+    background: rgba(56, 189, 248, 0.55);
+    left: 8%;
+    bottom: 6%;
+}
+
+.mockup-stack {
+    position: relative;
     display: grid;
-    gap: 1.75rem;
+    gap: 1.4rem;
+    z-index: 1;
 }
 
 .mockup-card {
     position: relative;
-    padding: 1.2rem;
+    padding: 1rem 1rem 1.25rem;
     border-radius: 26px;
-    background: rgba(17, 24, 39, 0.6);
+    background: rgba(12, 16, 27, 0.75);
     border: 1px solid rgba(124, 58, 237, 0.25);
-    box-shadow: 0 35px 80px rgba(15, 23, 42, 0.55);
+    box-shadow: 0 25px 60px rgba(5, 6, 15, 0.5);
     overflow: hidden;
+    width: clamp(200px, 52vw, 260px);
 }
 
-.mockup-card.glass {
-    background: rgba(15, 23, 42, 0.4);
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    backdrop-filter: blur(12px);
+.mockup-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(140deg, rgba(124, 58, 237, 0.16), rgba(236, 72, 153, 0));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.mockup-card:hover::before {
+    opacity: 1;
+}
+
+.mockup-card--mobile {
+    justify-self: center;
+}
+
+.mockup-card--desktop {
+    justify-self: center;
+    border-radius: 24px;
+    width: clamp(300px, 48vw, 420px);
+    border-color: rgba(56, 189, 248, 0.28);
 }
 
 .mockup-label {
@@ -203,7 +257,6 @@ section {
 
     /* NUEVO: comportamiento responsive */
     width: 100%;
-    max-width: 320px;
     margin: 0 auto;
     aspect-ratio: 9 / 16; /* formato móvil vertical */
 }
@@ -214,6 +267,92 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.mockup-device--mobile {
+    padding: 0.5rem;
+    border-radius: 28px;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12), transparent 65%),
+        rgba(8, 12, 24, 0.8);
+}
+
+.mockup-device--mobile::before {
+    content: '';
+    position: absolute;
+    top: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38%;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 1;
+}
+
+.mockup-device--mobile::after {
+    content: '';
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18%;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 1;
+}
+
+.mockup-device--mobile .mockup-video {
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.mockup-device--desktop {
+    aspect-ratio: 16 / 10;
+    padding: 0.75rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(124, 58, 237, 0.16));
+}
+
+.mockup-device--desktop .mockup-video {
+    border-radius: 16px;
+}
+
+@media (min-width: 900px) {
+    .mockup-stack {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: end;
+        gap: 1.8rem;
+    }
+
+    .mockup-card--mobile {
+        justify-self: end;
+        transform: translateY(-8%);
+    }
+
+    .mockup-card--desktop {
+        justify-self: start;
+        transform: translateY(8%);
+    }
+}
+
+@media (max-width: 899px) {
+    .mockup-stack {
+        justify-items: center;
+    }
+
+    .mockup-card {
+        width: min(260px, 90vw);
+    }
+
+    .mockup-card--desktop {
+        width: min(320px, 92vw);
+    }
+
+    .mockup-card--mobile,
+    .mockup-card--desktop {
+        transform: none;
+    }
 }
 
 
@@ -584,6 +723,28 @@ fieldset.form-field input[type='radio'] {
     .landing-main {
         padding-left: 1.25rem;
         padding-right: 1.25rem;
+    }
+
+    .hero-copy {
+        align-items: flex-start;
+        text-align: left;
+        gap: 1.25rem;
+    }
+
+    .hero-visual {
+        margin-top: 1rem;
+    }
+
+    .mockup-stack {
+        gap: 1.5rem;
+    }
+
+    .mockup-card {
+        width: min(240px, 85vw);
+    }
+
+    .mockup-card--desktop {
+        width: min(280px, 88vw);
     }
 
     .cta {
