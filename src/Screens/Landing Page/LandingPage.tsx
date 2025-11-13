@@ -128,7 +128,7 @@ const Landing: React.FC = () => {
                             BeatNow
                         </h1>
                         <p>
-                            Donde artistas urbanos y productores conectan para crear hits.<br>
+                            Donde artistas urbanos y productores conectan para crear hits.<br></br>
                             Descubre instrumentales deslizando, guarda tus favoritas, escribe letras en segundos y colabora con
                             productores que buscan voces frescas.
                         </p>
