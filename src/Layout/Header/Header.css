@@ -8,11 +8,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 1.25rem clamp(1.5rem, 4vw, 3rem);
+  padding: 1.1rem clamp(1.5rem, 4vw, 3rem);
   min-height: var(--header-height);
-  background: rgba(11, 11, 11, 0.85);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(8, 9, 18, 0.85);
+  border-bottom: 1px solid rgba(124, 58, 237, 0.35);
   backdrop-filter: blur(18px);
+  box-shadow: 0 12px 35px rgba(5, 6, 12, 0.35);
 }
 
 .logo {
@@ -33,26 +34,32 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.6rem;
 }
 
 .nav-link {
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.68);
   text-decoration: none;
   transition: color var(--transition-base);
 }
 
 .nav-link:hover,
 .nav-link:focus {
-  color: var(--color-text);
+  color: #ffffff;
 }
 
 .header-cta {
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 1rem;
+  }
 }
 
 @media (max-width: 768px) {

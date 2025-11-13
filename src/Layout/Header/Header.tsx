@@ -10,12 +10,14 @@ const Header: React.FC = () => (
       </a>
     </div>
     <nav className="nav-links" aria-label="Secciones principales">
-      <a className="nav-link" href="#features">Funciones</a>
-      <a className="nav-link" href="#workflow">Flujo</a>
-      <a className="nav-link" href="#seguridad">Seguridad</a>
+      <a className="nav-link" href="#para-artistas">Artistas</a>
+      <a className="nav-link" href="#para-productores">Productores</a>
+      <a className="nav-link" href="#demo">Demo</a>
+      <a className="nav-link" href="#como-funciona">Cómo funciona</a>
+      <a className="nav-link" href="#beta">Beta</a>
     </nav>
-    <a className="btn btn-outline header-cta" href="#descargar">
-      Descargar app
+    <a className="btn btn-primary header-cta" href="#beta-form">
+      Únete a la beta
     </a>
   </header>
 );
