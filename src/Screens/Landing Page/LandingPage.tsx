@@ -3,7 +3,9 @@ import { motion } from 'framer-motion';
 import './LandingPage.css';
 import Header from '../../Layout/Header/Header';
 import logo from '../../assets/Logo.png';
-import mobilePreview from '../../assets/Studio 2.jpeg';
+import mobilePreviewVideo from '../../assets/video movil.mp4';
+import dashboardPreviewVideo from '../../assets/video dashboard.mp4';
+
 
 const fadeInUp = {
     initial: { opacity: 0, y: 32 },
@@ -144,22 +146,34 @@ const Landing: React.FC = () => {
                         </ul>
                     </div>
                     <div className="hero-visual">
-                        <div className="mockup-card">
-                            <span className="mockup-label">Vista previa móvil</span>
-                            <div className="mockup-device">
-                                <img src={mobilePreview} alt="Mockup de la app BeatNow" />
-                            </div>
-                            <div className="mockup-overlay" />
-                        </div>
-                        <div className="mockup-card glass">
-                            <span className="mockup-label">Panel del productor</span>
-                            <div className="mockup-placeholder">
-                                <div className="placeholder-line" />
-                                <div className="placeholder-line wide" />
-                                <div className="placeholder-chart" />
-                                <div className="placeholder-line" />
-                            </div>
-                        </div>
+                      <div className="mockup-card">
+    <span className="mockup-label">Vista previa móvil</span>
+    <div className="mockup-device">
+        <video 
+            src={mobilePreviewVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="mockup-video"
+        />
+    </div>
+    <div className="mockup-overlay" />
+</div>
+                       <div className="mockup-card">
+    <span className="mockup-label">Vista previa productores</span>
+    <div className="mockup-device">
+        <video 
+            src={dashboardPreviewVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="mockup-video"
+        />
+    </div>
+    <div className="mockup-overlay" />
+</div>
                     </div>
                 </motion.section>
 
