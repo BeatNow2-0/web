@@ -125,9 +125,10 @@ const Landing: React.FC = () => {
                 >
                     <div className="hero-copy">
                         <h1>
-                            BeatNow es la app donde artistas urbanos y productores conectan para crear hits.
+                            BeatNow
                         </h1>
                         <p>
+                            Donde artistas urbanos y productores conectan para crear hits.<br>
                             Descubre instrumentales deslizando, guarda tus favoritas, escribe letras en segundos y colabora con
                             productores que buscan voces frescas.
                         </p>
