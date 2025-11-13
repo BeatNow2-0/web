@@ -146,34 +146,38 @@ const Landing: React.FC = () => {
                         </ul>
                     </div>
                     <div className="hero-visual">
-                      <div className="mockup-card">
-    <span className="mockup-label">Vista previa móvil</span>
-    <div className="mockup-device">
-        <video 
-            src={mobilePreviewVideo}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="mockup-video"
-        />
-    </div>
-    <div className="mockup-overlay" />
-</div>
-                       <div className="mockup-card">
-    <span className="mockup-label">Vista previa productores</span>
-    <div className="mockup-device">
-        <video 
-            src={dashboardPreviewVideo}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="mockup-video"
-        />
-    </div>
-    <div className="mockup-overlay" />
-</div>
+                        <span className="hero-visual-glow hero-visual-glow-one" aria-hidden="true" />
+                        <span className="hero-visual-glow hero-visual-glow-two" aria-hidden="true" />
+                        <div className="mockup-stack">
+                            <div className="mockup-card mockup-card--mobile">
+                                <span className="mockup-label">Vista previa móvil</span>
+                                <div className="mockup-device mockup-device--mobile">
+                                    <video
+                                        src={mobilePreviewVideo}
+                                        autoPlay
+                                        loop
+                                        muted
+                                        playsInline
+                                        className="mockup-video"
+                                    />
+                                </div>
+                                <div className="mockup-overlay" />
+                            </div>
+                            <div className="mockup-card mockup-card--desktop">
+                                <span className="mockup-label">Vista previa productores</span>
+                                <div className="mockup-device mockup-device--desktop">
+                                    <video
+                                        src={dashboardPreviewVideo}
+                                        autoPlay
+                                        loop
+                                        muted
+                                        playsInline
+                                        className="mockup-video"
+                                    />
+                                </div>
+                                <div className="mockup-overlay" />
+                            </div>
+                        </div>
                     </div>
                 </motion.section>
 
