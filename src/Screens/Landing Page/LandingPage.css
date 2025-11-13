@@ -210,7 +210,7 @@ section {
     border: 1px solid rgba(124, 58, 237, 0.25);
     box-shadow: 0 25px 60px rgba(5, 6, 15, 0.5);
     overflow: hidden;
-    width: clamp(220px, 40vw, 300px);
+    width: clamp(200px, 52vw, 260px);
 }
 
 .mockup-card::before {
@@ -235,7 +235,7 @@ section {
 .mockup-card--desktop {
     justify-self: center;
     border-radius: 24px;
-    width: clamp(260px, 44vw, 340px);
+    width: clamp(300px, 48vw, 420px);
     border-color: rgba(56, 189, 248, 0.28);
 }
 
@@ -333,6 +333,25 @@ section {
     .mockup-card--desktop {
         justify-self: start;
         transform: translateY(8%);
+    }
+}
+
+@media (max-width: 899px) {
+    .mockup-stack {
+        justify-items: center;
+    }
+
+    .mockup-card {
+        width: min(260px, 90vw);
+    }
+
+    .mockup-card--desktop {
+        width: min(320px, 92vw);
+    }
+
+    .mockup-card--mobile,
+    .mockup-card--desktop {
+        transform: none;
     }
 }
 
@@ -704,6 +723,28 @@ fieldset.form-field input[type='radio'] {
     .landing-main {
         padding-left: 1.25rem;
         padding-right: 1.25rem;
+    }
+
+    .hero-copy {
+        align-items: flex-start;
+        text-align: left;
+        gap: 1.25rem;
+    }
+
+    .hero-visual {
+        margin-top: 1rem;
+    }
+
+    .mockup-stack {
+        gap: 1.5rem;
+    }
+
+    .mockup-card {
+        width: min(240px, 85vw);
+    }
+
+    .mockup-card--desktop {
+        width: min(280px, 88vw);
     }
 
     .cta {
