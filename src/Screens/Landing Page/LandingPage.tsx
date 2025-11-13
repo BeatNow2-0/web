@@ -65,11 +65,7 @@ const demoBlocks = [
     {
         title: 'Panel web para productores',
         description: 'Gestiona tu catálogo, actualiza licencias y monitoriza estadísticas desde cualquier navegador.',
-    },
-    {
-        title: 'Modo teleprompter',
-        description: 'Letras sincronizadas con el tempo y resaltado dinámico para ensayar y grabar sin perderse.',
-    },
+    }
 ];
 
 const flowSteps = [
