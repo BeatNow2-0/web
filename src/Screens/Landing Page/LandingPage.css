@@ -194,18 +194,28 @@ section {
     margin-bottom: 1rem;
 }
 
+
 .mockup-device {
     border-radius: 22px;
     overflow: hidden;
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.12);
+
+    /* NUEVO: comportamiento responsive */
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    aspect-ratio: 9 / 16; /* formato móvil vertical */
 }
 
-.mockup-device img {
+.mockup-device img,
+.mockup-device video {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
 }
+
 
 .mockup-overlay {
     position: absolute;
