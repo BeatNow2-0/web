@@ -122,7 +122,6 @@ const Landing: React.FC = () => {
                     viewport={fadeInUp.viewport}
                 >
                     <div className="hero-copy">
-                        <span className="badge">MVP en beta privada</span>
                         <h1>
                             BeatNow es la app donde artistas urbanos y productores conectan para crear hits.
                         </h1>
