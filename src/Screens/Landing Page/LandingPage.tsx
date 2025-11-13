@@ -36,10 +36,6 @@ const artistBenefits = [
         title: 'Escribe letras mientras escuchas',
         description: 'Editor en pantalla dividida para escribir barras sincronizadas con el beat y no perder el ritmo.',
     },
-    {
-        title: 'Organiza cada proyecto',
-        description: 'Notas, referencias y versiones guardadas en un mismo lugar, accesibles desde tu móvil.',
-    },
 ];
 
 const producerBenefits = [
@@ -54,10 +50,6 @@ const producerBenefits = [
     {
         title: 'Gana visibilidad real',
         description: 'Tus beats aparecen en el feed de artistas listos para escribir. Cada guardado es una oportunidad.',
-    },
-    {
-        title: 'Artistas escribiendo sobre tus beats',
-        description: 'Recibe notificaciones cuando alguien crea letras con tus instrumentales y abre la puerta a colaboraciones.',
     },
     {
         title: 'Estadísticas básicas',
