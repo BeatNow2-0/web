@@ -5,6 +5,7 @@ import Header from '../../Layout/Header/Header';
 import logo from '../../assets/Logo.png';
 import mobilePreviewVideo from '../../assets/video movil.mp4';
 import dashboardPreviewVideo from '../../assets/video dashboard.mp4';
+import config from "../../config/apiConfig.json"
 
 
 const fadeInUp = {
@@ -92,19 +93,6 @@ const Landing: React.FC = () => {
     const [selectedRole, setSelectedRole] = React.useState<'artista' | 'productor'>('artista');
     const [email, setEmail] = React.useState('');
 
-    const handleHeroCTA = (role: 'artista' | 'productor') => {
-        setSelectedRole(role);
-        const section = document.getElementById('beta-form');
-        section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    };
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        // Aquí puedes conectar con tu backend o herramienta de newsletters.
-        console.log('Registro beta', { email, role: selectedRole });
-        setEmail('');
-    };
-
     return (
         <div className="landing-page" id="inicio">
             <Header />
@@ -133,11 +121,11 @@ const Landing: React.FC = () => {
                             productores que buscan voces frescas.
                         </p>
                         <div className="hero-cta">
-                            <button type="button" className="cta primary" onClick={() => handleHeroCTA('artista')}>
-                                Soy artista – Unirme a la beta
+                            <button type="button" className="cta primary">
+                               Soy artista – Unirme a la beta
                             </button>
-                            <button type="button" className="cta secondary" onClick={() => handleHeroCTA('productor')}>
-                                Soy productor – Subir beats
+                            <button type="button" className="cta secondary" >
+                               <a href={config.WEBAPP}>Soy productor – Subir beats</a> 
                             </button>
                         </div>
                         <ul className="hero-highlights">
@@ -283,71 +271,7 @@ const Landing: React.FC = () => {
                     </div>
                 </motion.section>
 
-                <motion.section
-                    id="beta"
-                    className="beta-section"
-                    initial={fadeInUp.initial}
-                    whileInView={fadeInUp.whileInView}
-                    transition={fadeInUp.transition}
-                    viewport={fadeInUp.viewport}
-                >
-                    <div className="beta-content">
-                        <div className="beta-copy">
-                            <span className="section-badge">MVP / Beta cerrada</span>
-                            <h2>Estamos buscando a los primeros artistas y productores en probar BeatNow</h2>
-                            <p>
-                                Serás de los primeros en acceder al MVP, enviar feedback directo al equipo y asegurar tu espacio cuando
-                                lancemos la versión pública.
-                            </p>
-                            <ul>
-                                <li>Acceso anticipado a nuevas funciones.</li>
-                                <li>Canal directo con el equipo para compartir ideas.</li>
-                                <li>Visibilidad destacada cuando lancemos oficialmente.</li>
-                            </ul>
-                        </div>
-                        <form id="beta-form" className="beta-form" onSubmit={handleSubmit}>
-                            <h3>Únete a la beta</h3>
-                            <p>Déjanos tu email y dinos si eres artista o productor. Te avisaremos cuando abramos cupo.</p>
-                            <label className="form-field" htmlFor="beta-email">
-                                Email
-                                <input
-                                    id="beta-email"
-                                    type="email"
-                                    name="email"
-                                    placeholder="tucorreo@beatnow.com"
-                                    value={email}
-                                    onChange={(event) => setEmail(event.target.value)}
-                                    required
-                                />
-                            </label>
-                            <fieldset className="form-field">
-                                <legend>Soy</legend>
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="role"
-                                        value="artista"
-                                        checked={selectedRole === 'artista'}
-                                        onChange={() => setSelectedRole('artista')}
-                                    />
-                                    Artista
-                                </label>
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="role"
-                                        value="productor"
-                                        checked={selectedRole === 'productor'}
-                                        onChange={() => setSelectedRole('productor')}
-                                    />
-                                    Productor
-                                </label>
-                            </fieldset>
-                            <button type="submit" className="cta primary full">Unirme a la beta</button>
-                            <span className="form-footnote">Prometemos cero spam. Solo noticias de BeatNow.</span>
-                        </form>
-                    </div>
-                </motion.section>
+               
             </main>
 
             <footer className="landing-footer">

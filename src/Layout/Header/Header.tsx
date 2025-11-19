@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../assets/Logo.png';
 import './Header.css';
+import config from "../../config/apiConfig.json"
 
 const Header: React.FC = () => (
   <header className="header">
@@ -14,9 +15,8 @@ const Header: React.FC = () => (
       <a className="nav-link" href="#para-productores">Productores</a>
       <a className="nav-link" href="#demo">Demo</a>
       <a className="nav-link" href="#como-funciona">Cómo funciona</a>
-      <a className="nav-link" href="#beta">Beta</a>
     </nav>
-    <a className="btn btn-primary header-cta" href="#beta-form">
+    <a className="btn btn-primary header-cta" href={config.WEBAPP}>
       Únete a la beta
     </a>
   </header>
