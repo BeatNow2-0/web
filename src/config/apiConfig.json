@@ -1,4 +1,4 @@
 {
-  "API_BASE_URL": "https://51.91.109.185:8001/",
-  "WEBAPP": "https://app-web-mauve.vercel.app/register"
+  "API_BASE_URL": "https://api.beatnow.app/",
+  "WEBAPP": "https://app.beatnow.app/register"
 }

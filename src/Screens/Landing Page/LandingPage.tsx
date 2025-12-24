@@ -285,7 +285,7 @@ const Landing: React.FC = () => {
                     <div className="footer-links">
                         <h4>Contacto</h4>
                         <a href="mailto:hola@beatnow.app">hola@beatnow.app</a>
-                        <a href="tel:+34999999999">+34 999 999 999</a>
+                        <a href="tel:+34692903572">+34 692903572</a>
                     </div>
                     <div className="footer-links">
                         <h4>Políticas</h4>
