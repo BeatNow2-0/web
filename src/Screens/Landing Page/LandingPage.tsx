@@ -92,6 +92,22 @@ const flowSteps = [
 const Landing: React.FC = () => {
     const [selectedRole, setSelectedRole] = React.useState<'artista' | 'productor'>('artista');
     const [email, setEmail] = React.useState('');
+    const betaUrl = React.useMemo(() => {
+        const url = new URL(config.WEBAPP);
+
+        if (email) {
+            url.searchParams.set('email', email);
+        }
+
+        url.searchParams.set('role', selectedRole);
+
+        return url.toString();
+    }, [email, selectedRole]);
+
+    const handleBetaSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        window.open(betaUrl, '_blank', 'noopener,noreferrer');
+    };
 
     return (
         <div className="landing-page" id="inicio">
@@ -116,17 +132,17 @@ const Landing: React.FC = () => {
                             BeatNow
                         </h1>
                         <p>
-                            Donde artistas urbanos y productores conectan para crear hits.<br></br>
+                            Donde artistas urbanos y productores conectan para crear hits.<br />
                             Descubre instrumentales deslizando, guarda tus favoritas, escribe letras en segundos y colabora con
                             productores que buscan voces frescas.
                         </p>
                         <div className="hero-cta">
-                            <button type="button" className="cta primary">
-                               Soy artista – Unirme a la beta
-                            </button>
-                            <button type="button" className="cta secondary" >
-                               <a href={config.WEBAPP}>Soy productor – Subir beats</a> 
-                            </button>
+                            <a className="cta primary" href="#beta">
+                                Soy artista – Unirme a la beta
+                            </a>
+                            <a className="cta secondary" href={config.WEBAPP} target="_blank" rel="noreferrer">
+                                Soy productor – Subir beats
+                            </a>
                         </div>
                         <ul className="hero-highlights">
                             <li>En menos de 5 segundos sabes qué es BeatNow y cómo te ayuda.</li>
@@ -147,7 +163,9 @@ const Landing: React.FC = () => {
                                         loop
                                         muted
                                         playsInline
+                                        preload="metadata"
                                         className="mockup-video"
+                                        aria-label="Vista previa móvil de BeatNow"
                                     />
                                 </div>
                                 <div className="mockup-overlay" />
@@ -161,7 +179,9 @@ const Landing: React.FC = () => {
                                         loop
                                         muted
                                         playsInline
+                                        preload="metadata"
                                         className="mockup-video"
+                                        aria-label="Vista previa del panel web para productores"
                                     />
                                 </div>
                                 <div className="mockup-overlay" />
@@ -271,7 +291,103 @@ const Landing: React.FC = () => {
                     </div>
                 </motion.section>
 
-               
+                <motion.section
+                    id="beta"
+                    className="beta-section"
+                    initial={fadeInUp.initial}
+                    whileInView={fadeInUp.whileInView}
+                    transition={fadeInUp.transition}
+                    viewport={fadeInUp.viewport}
+                >
+                    <div className="beta-content">
+                        <div className="beta-copy">
+                            <span className="section-badge">Beta privada</span>
+                            <h2>Reserva tu plaza y entra con contexto real</h2>
+                            <p>
+                                Antes de abrir el acceso masivo, estamos validando el producto con artistas y productores
+                                que realmente trabajan sobre beats cada semana.
+                            </p>
+                            <ul>
+                                <li>Recibirás el acceso en la experiencia que mejor encaja contigo.</li>
+                                <li>Tu correo se usará solo para gestionar el alta y novedades del producto.</li>
+                                <li>Puedes revisar abajo nuestra política y términos resumidos.</li>
+                            </ul>
+                        </div>
+
+                        <form className="beta-form" onSubmit={handleBetaSubmit}>
+                            <h3>Quiero entrar en la beta</h3>
+                            <p>Déjanos tu perfil y te llevamos al registro con los datos preparados.</p>
+
+                            <label className="form-field">
+                                Correo profesional
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="tu@email.com"
+                                    autoComplete="email"
+                                    value={email}
+                                    onChange={(event) => setEmail(event.target.value)}
+                                    required
+                                />
+                            </label>
+
+                            <fieldset className="form-field">
+                                <legend>Quiero entrar como</legend>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="role"
+                                        value="artista"
+                                        checked={selectedRole === 'artista'}
+                                        onChange={() => setSelectedRole('artista')}
+                                    />
+                                    Artista
+                                </label>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="role"
+                                        value="productor"
+                                        checked={selectedRole === 'productor'}
+                                        onChange={() => setSelectedRole('productor')}
+                                    />
+                                    Productor
+                                </label>
+                            </fieldset>
+
+                            <button type="submit" className="cta primary full">
+                                Continuar al registro
+                            </button>
+                            <p className="form-footnote">
+                                Al continuar aceptas nuestra política de privacidad y términos de uso resumidos.
+                            </p>
+                        </form>
+                    </div>
+                </motion.section>
+
+                <section id="privacidad" className="legal-section">
+                    <div className="section-heading">
+                        <span className="section-badge alt">Privacidad</span>
+                        <h2>Cómo tratamos tus datos</h2>
+                        <p>
+                            Recopilamos únicamente la información necesaria para gestionar tu alta en la beta,
+                            comunicarnos contigo y mejorar el producto. No vendemos datos a terceros y puedes pedir
+                            actualización o eliminación escribiendo a hola@beatnow.app.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="terminos" className="legal-section">
+                    <div className="section-heading">
+                        <span className="section-badge alt">Términos</span>
+                        <h2>Uso básico de la plataforma</h2>
+                        <p>
+                            El acceso beta está sujeto a disponibilidad, evolución continua del producto y uso legítimo
+                            del contenido subido. Los usuarios mantienen la responsabilidad sobre los derechos del
+                            material que compartan en la plataforma.
+                        </p>
+                    </div>
+                </section>
             </main>
 
             <footer className="landing-footer">
@@ -289,23 +405,15 @@ const Landing: React.FC = () => {
                     </div>
                     <div className="footer-links">
                         <h4>Políticas</h4>
-                        <a href="#">Política de privacidad</a>
-                        <a href="#">Términos de uso</a>
+                        <a href="#privacidad">Política de privacidad</a>
+                        <a href="#terminos">Términos de uso</a>
                     </div>
                     <div className="footer-links">
                         <h4>Redes</h4>
-                        <a href="https://instagram.com" target="_blank" rel="noreferrer">
-                            Instagram
-                        </a>
-                        <a href="https://tiktok.com" target="_blank" rel="noreferrer">
-                            TikTok
-                        </a>
-                        <a href="https://twitter.com" target="_blank" rel="noreferrer">
-                            X (Twitter)
-                        </a>
+                        <a href="mailto:hola@beatnow.app">Solicita nuestras redes oficiales</a>
                     </div>
                 </div>
-                <div className="footer-bottom">© 2025 BeatNow. Todos los derechos reservados.</div>
+                <div className="footer-bottom">© 2026 BeatNow. Todos los derechos reservados.</div>
             </footer>
         </div>
     );
