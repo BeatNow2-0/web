@@ -30,11 +30,19 @@
 .logo a {
   display: inline-flex;
   align-items: center;
+  gap: 0.7rem;
 }
 
 .logoPng {
   height: 46px;
   width: 46px;
+}
+
+.logoWord {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
 }
 
 .nav-links {
@@ -155,6 +163,10 @@
 @media (max-width: 640px) {
   .header {
     padding: 1rem 1.25rem;
+  }
+
+  .logoWord {
+    display: none;
   }
 
   .header-cta {

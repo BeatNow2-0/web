@@ -83,129 +83,128 @@ const Landing: React.FC = () => {
         <motion.section className="hero-section" {...reveal}>
           <div className="hero-copy">
             <span className="eyebrow">Beat discovery for artists. Dashboard for producers.</span>
+            <div className="hero-brand">
+              <img src={logo} alt="BeatNow" />
+              <span>BeatNow</span>
+            </div>
             <h1>Una forma más limpia de encontrar beats y empezar canciones.</h1>
             <p className="hero-text">
               BeatNow convierte el descubrimiento de beats en una experiencia móvil elegante, rápida y enfocada. Los artistas encuentran antes la idea correcta. Los productores presentan mejor su catálogo.
             </p>
 
             <div className="hero-actions">
-              <a className="cta primary" href="#beta">
-                Entrar en la beta
+              <a className="cta primary" href={config.WEBAPP} target="_blank" rel="noreferrer">
+                Ir a app-web y registrarme
               </a>
-              <a className="cta secondary" href="#product">
-                Ver producto
+              <a className="cta secondary" href="#beta">
+                Entrar en la beta
               </a>
             </div>
 
-            <div className="hero-meta">
-              <div>
-                <strong>Mobile first</strong>
-                <span>Descubrir, guardar y escribir.</span>
-              </div>
-              <div>
-                <strong>Producer ready</strong>
-                <span>Catálogo, edición y claridad visual.</span>
-              </div>
+            <div className="hero-note">
+              Una app pensada para artistas. Una consola web pensada para productores.
             </div>
           </div>
 
           <div className="hero-visual">
-            <div className="product-stage">
-              <div className="product-stage-copy product-stage-copy-top">
+            <div className="hero-stage">
+              <div className="hero-stage-card hero-stage-card-top">
                 <strong>Descubre</strong>
                 <span>Encuentra el beat correcto en segundos.</span>
               </div>
 
-              <div className="device-pair">
-                <div className="phone-mockup">
-                  <div className="phone-screen">
-                    <div className="phone-status">
-                      <span>9:41</span>
-                      <span>BeatNow</span>
-                    </div>
-                    <div className="phone-art" />
-                    <div className="phone-track">
-                      <strong>Midnight Bounce</strong>
-                      <span>Prod. Nova</span>
-                    </div>
-                    <div className="phone-wave" />
-                    <div className="phone-tags">
-                      <span>140 BPM</span>
-                      <span>Dark Trap</span>
-                    </div>
-                    <div className="phone-note">
-                      <small>Lyrics mode</small>
-                      <p>Tus barras empiezan aquí.</p>
-                    </div>
+              <div className="phone-mockup hero-phone">
+                <div className="phone-screen">
+                  <div className="phone-status">
+                    <span>9:41</span>
+                    <span>BeatNow</span>
                   </div>
-                </div>
-
-                <div className="desktop-mockup">
-                  <div className="desktop-bar">
-                    <span />
-                    <span />
-                    <span />
+                  <div className="phone-art" />
+                  <div className="phone-track">
+                    <strong>Midnight Bounce</strong>
+                    <span>Prod. Nova</span>
                   </div>
-                  <div className="desktop-content">
-                    <div className="desktop-head">
-                      <div>
-                        <strong>Producer dashboard</strong>
-                        <span>Catalog overview</span>
-                      </div>
-                      <div className="desktop-chip">Upload</div>
-                    </div>
-
-                    <div className="desktop-stats">
-                      <div>
-                        <span>Beats</span>
-                        <strong>48</strong>
-                      </div>
-                      <div>
-                        <span>Saves</span>
-                        <strong>2.3k</strong>
-                      </div>
-                      <div>
-                        <span>Plays</span>
-                        <strong>14.8k</strong>
-                      </div>
-                    </div>
-
-                    <div className="desktop-list">
-                      <div className="desktop-row">
-                        <span>Neon Pulse</span>
-                        <span>Trap</span>
-                        <span>132 BPM</span>
-                      </div>
-                      <div className="desktop-row">
-                        <span>Velvet Run</span>
-                        <span>R&B</span>
-                        <span>96 BPM</span>
-                      </div>
-                      <div className="desktop-row">
-                        <span>Night Circuit</span>
-                        <span>Drill</span>
-                        <span>145 BPM</span>
-                      </div>
-                    </div>
+                  <div className="phone-wave" />
+                  <div className="phone-tags">
+                    <span>140 BPM</span>
+                    <span>Dark Trap</span>
+                  </div>
+                  <div className="phone-note">
+                    <small>Lyrics mode</small>
+                    <p>Tus barras empiezan aquí.</p>
                   </div>
                 </div>
               </div>
 
-              <div className="product-stage-copy product-stage-copy-bottom">
-                <strong>Gestiona</strong>
-                <span>Sube, edita y presenta tu catálogo con más claridad.</span>
+              <div className="hero-stage-card hero-stage-card-bottom">
+                <strong>Escribe</strong>
+                <span>Guarda favoritos, repite el beat y entra en modo creativo sin fricción.</span>
               </div>
             </div>
           </div>
         </motion.section>
 
         <motion.section id="product" className="intro-section" {...reveal}>
-          <div className="section-copy">
-            <span className="section-label">Producto</span>
-            <h2>Menos ruido visual. Más foco en lo que importa.</h2>
-            <p>
-              BeatNow no necesita parecer recargado para sentirse moderno. La experiencia gana cuando todo respira, la jerarquía está clara y el producto se entiende rápido.
-            </p>
+          <div className="product-overview">
+            <div className="section-copy">
+              <span className="section-label">Producto</span>
+              <h2>Primero una experiencia clara. Después, contexto sobre la app.</h2>
+              <p>
+                BeatNow está dividido en dos piezas que trabajan juntas: una app móvil para descubrir beats y escribir sobre ellos, y una consola web para que los productores suban, editen y cuiden su catálogo.
+              </p>
+            </div>
+
+            <div className="product-overview-card">
+              <div className="desktop-mockup">
+                <div className="desktop-bar">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <div className="desktop-content">
+                  <div className="desktop-head">
+                    <div>
+                      <strong>Producer dashboard</strong>
+                      <span>Catalog overview</span>
+                    </div>
+                    <div className="desktop-chip">Upload</div>
+                  </div>
+
+                  <div className="desktop-stats">
+                    <div>
+                      <span>Beats</span>
+                      <strong>48</strong>
+                    </div>
+                    <div>
+                      <span>Saves</span>
+                      <strong>2.3k</strong>
+                    </div>
+                    <div>
+                      <span>Plays</span>
+                      <strong>14.8k</strong>
+                    </div>
+                  </div>
+
+                  <div className="desktop-list">
+                    <div className="desktop-row">
+                      <span>Neon Pulse</span>
+                      <span>Trap</span>
+                      <span>132 BPM</span>
+                    </div>
+                    <div className="desktop-row">
+                      <span>Velvet Run</span>
+                      <span>R&B</span>
+                      <span>96 BPM</span>
+                    </div>
+                    <div className="desktop-row">
+                      <span>Night Circuit</span>
+                      <span>Drill</span>
+                      <span>145 BPM</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.section>
 

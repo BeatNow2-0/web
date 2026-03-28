@@ -68,15 +68,33 @@ section {
 
 .hero-section {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
   gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
+  min-height: min(700px, calc(100vh - var(--header-height) - 40px));
 }
 
 .hero-copy {
   display: flex;
   flex-direction: column;
   gap: 1.35rem;
+}
+
+.hero-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.hero-brand img {
+  width: 54px;
+  height: 54px;
+}
+
+.hero-brand span {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .eyebrow,
@@ -95,9 +113,9 @@ section {
 
 .hero-copy h1 {
   margin: 0;
-  max-width: 8.6ch;
-  font-size: clamp(3rem, 6vw, 5.2rem);
-  line-height: 0.96;
+  max-width: 9.8ch;
+  font-size: clamp(2.9rem, 5vw, 4.9rem);
+  line-height: 0.98;
   letter-spacing: -0.05em;
 }
 
@@ -160,21 +178,22 @@ section {
   gap: 0.9rem;
 }
 
-.hero-meta div,
+.hero-note {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 .benefit-card,
 .producer-panel,
 .flow-card,
 .beta-section,
 .legal-card,
-.product-stage {
+.desktop-mockup,
+.product-overview-card {
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
-}
-
-.hero-meta div {
-  padding: 0.95rem 1rem;
-  border-radius: 20px;
 }
 
 .hero-meta strong,
@@ -201,40 +220,33 @@ section {
   position: relative;
 }
 
-.product-stage {
+.hero-stage {
   position: relative;
-  padding: 2rem;
-  border-radius: 32px;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
-}
-
-.device-pair {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.48fr) minmax(0, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(135, 49, 228, 0.18), transparent 30%),
+    rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.26);
 }
 
-.product-stage-copy {
-  max-width: 220px;
-  padding: 0.9rem 1rem;
+.hero-stage-card {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.95rem 1rem;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.product-stage-copy span {
+.hero-stage-card span {
   color: rgba(255, 255, 255, 0.66);
   line-height: 1.55;
-}
-
-.product-stage-copy-top {
-  margin-bottom: 1rem;
-}
-
-.product-stage-copy-bottom {
-  margin-top: 1rem;
-  margin-left: auto;
 }
 
 .phone-mockup {
@@ -242,12 +254,7 @@ section {
   justify-content: center;
 }
 
-.phone-mockup,
-.desktop-mockup {
-  position: relative;
-}
-
-.phone-mockup::before {
+.hero-phone::before {
   content: '';
   position: absolute;
   inset: 10% -18%;
@@ -259,7 +266,7 @@ section {
 .phone-screen {
   position: relative;
   z-index: 1;
-  width: min(260px, 100%);
+  width: min(280px, 100%);
   aspect-ratio: 9 / 16;
   padding: 1rem;
   border-radius: 30px;
@@ -353,6 +360,18 @@ section {
     rgba(9, 11, 21, 0.98);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+}
+
+.product-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.product-overview-card {
+  padding: 1rem;
+  border-radius: 28px;
 }
 
 .desktop-bar {
@@ -635,6 +654,7 @@ section {
 
 @media (max-width: 1100px) {
   .hero-section,
+  .product-overview,
   .producer-section,
   .beta-section,
   .legal-section,
@@ -642,7 +662,6 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .device-pair,
   .benefit-grid,
   .flow-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -655,7 +674,6 @@ section {
   }
 
   .hero-section,
-  .device-pair,
   .hero-meta,
   .benefit-grid,
   .flow-grid,
@@ -664,12 +682,9 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .product-stage {
+  .hero-stage,
+  .product-overview-card {
     padding: 1.2rem;
-  }
-
-  .product-stage-copy-bottom {
-    margin-left: 0;
   }
 }
 

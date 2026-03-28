@@ -6,7 +6,7 @@ import config from "../../config/apiConfig.json"
 const navigationLinks = [
   { href: '#para-artistas', label: 'Artistas' },
   { href: '#para-productores', label: 'Productores' },
-  { href: '#demo', label: 'Demo' },
+  { href: '#product', label: 'Producto' },
   { href: '#como-funciona', label: 'Cómo funciona' },
   { href: '#beta', label: 'Beta' },
 ];
@@ -23,6 +23,7 @@ const Header: React.FC = () => {
       <div className="logo">
         <a href="#inicio" aria-label="BeatNow">
           <img className="logoPng" src={logo} alt="BeatNow" />
+          <span className="logoWord">BeatNow</span>
         </a>
       </div>
 
