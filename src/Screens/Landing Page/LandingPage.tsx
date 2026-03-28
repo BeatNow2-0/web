@@ -3,8 +3,6 @@ import { motion } from 'framer-motion';
 import './LandingPage.css';
 import Header from '../../Layout/Header/Header';
 import logo from '../../assets/Logo.png';
-import mobilePreviewVideo from '../../assets/video movil.mp4';
-import dashboardPreviewVideo from '../../assets/video dashboard.mp4';
 import config from '../../config/apiConfig.json';
 
 const reveal = {
@@ -148,16 +146,34 @@ const Landing: React.FC = () => {
             <div className="hero-device-stage">
               <div className="hero-phone-shell">
                 <div className="phone-glow" />
-                <video
-                  src={mobilePreviewVideo}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="hero-phone-video"
-                  aria-label="Vista previa móvil de BeatNow"
-                />
+                <div className="hero-phone-ui" aria-label="Mockup móvil de BeatNow">
+                  <div className="phone-status-bar">
+                    <span>9:41</span>
+                    <span>BeatNow</span>
+                  </div>
+                  <div className="phone-cover-card">
+                    <div className="phone-cover-art" />
+                    <div className="phone-cover-copy">
+                      <strong>Midnight Bounce</strong>
+                      <span>Prod. Nova</span>
+                    </div>
+                  </div>
+                  <div className="phone-wave" />
+                  <div className="phone-meta-pills">
+                    <span>140 BPM</span>
+                    <span>Dark Trap</span>
+                    <span>Save</span>
+                  </div>
+                  <div className="phone-lyrics-card">
+                    <span>Lyrics mode</span>
+                    <p>Tus barras empiezan donde el beat se queda.</p>
+                  </div>
+                  <div className="phone-bottom-nav">
+                    <span />
+                    <span className="active" />
+                    <span />
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -209,16 +225,54 @@ const Landing: React.FC = () => {
                 <span />
                 <span />
               </div>
-              <video
-                src={dashboardPreviewVideo}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="showcase-dashboard-video"
-                aria-label="Vista previa del panel web para productores"
-              />
+              <div className="showcase-dashboard-ui" aria-label="Mockup del dashboard de productores">
+                <div className="dashboard-sidebar-mock">
+                  <span className="sidebar-dot active" />
+                  <span className="sidebar-dot" />
+                  <span className="sidebar-dot" />
+                  <span className="sidebar-dot" />
+                </div>
+                <div className="dashboard-main-mock">
+                  <div className="dashboard-top-row">
+                    <div className="dashboard-title-block">
+                      <strong>Producer Dashboard</strong>
+                      <span>Catalog overview</span>
+                    </div>
+                    <div className="dashboard-pill">Upload beat</div>
+                  </div>
+                  <div className="dashboard-kpi-row">
+                    <div className="dashboard-kpi-card">
+                      <span>Beats</span>
+                      <strong>48</strong>
+                    </div>
+                    <div className="dashboard-kpi-card">
+                      <span>Saves</span>
+                      <strong>2.3k</strong>
+                    </div>
+                    <div className="dashboard-kpi-card">
+                      <span>Plays</span>
+                      <strong>14.8k</strong>
+                    </div>
+                  </div>
+                  <div className="dashboard-list-card">
+                    <div className="dashboard-list-row">
+                      <span>Neon Pulse</span>
+                      <span>Trap</span>
+                      <span>132 BPM</span>
+                    </div>
+                    <div className="dashboard-list-row">
+                      <span>Velvet Run</span>
+                      <span>R&B</span>
+                      <span>96 BPM</span>
+                    </div>
+                    <div className="dashboard-list-row">
+                      <span>Night Circuit</span>
+                      <span>Drill</span>
+                      <span>145 BPM</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.section>
