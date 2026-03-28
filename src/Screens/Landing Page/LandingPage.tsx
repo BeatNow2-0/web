@@ -133,58 +133,93 @@ const Landing: React.FC = () => {
           </div>
 
           <div className="hero-visual">
-            <div className="hero-visual-card hero-visual-card-left top">
-              <span>01</span>
-              <p>Scroll natural para descubrir beats con contexto real.</p>
-            </div>
+            <div className="hero-stage-shell">
+              <div className="hero-stage-badge hero-stage-badge-top">
+                <strong>Descubre</strong>
+                <span>Feed vertical para encontrar el beat correcto en segundos.</span>
+              </div>
 
-            <div className="hero-visual-card hero-visual-card-left bottom">
-              <span>03</span>
-              <p>Escribe letras mientras escuchas sin salir del flujo creativo.</p>
-            </div>
-
-            <div className="hero-device-stage">
-              <div className="hero-phone-shell">
-                <div className="phone-glow" />
-                <div className="hero-phone-ui" aria-label="Mockup móvil de BeatNow">
-                  <div className="phone-status-bar">
-                    <span>9:41</span>
-                    <span>BeatNow</span>
-                  </div>
-                  <div className="phone-cover-card">
-                    <div className="phone-cover-art" />
-                    <div className="phone-cover-copy">
-                      <strong>Midnight Bounce</strong>
-                      <span>Prod. Nova</span>
+              <div className="hero-stage-content">
+                <div className="hero-device-stage">
+                  <div className="hero-phone-shell">
+                    <div className="phone-glow" />
+                    <div className="hero-phone-ui" aria-label="Mockup móvil de BeatNow">
+                      <div className="phone-status-bar">
+                        <span>9:41</span>
+                        <span>BeatNow</span>
+                      </div>
+                      <div className="phone-cover-card">
+                        <div className="phone-cover-art" />
+                        <div className="phone-cover-copy">
+                          <strong>Midnight Bounce</strong>
+                          <span>Prod. Nova</span>
+                        </div>
+                      </div>
+                      <div className="phone-wave" />
+                      <div className="phone-meta-pills">
+                        <span>140 BPM</span>
+                        <span>Dark Trap</span>
+                        <span>Save</span>
+                      </div>
+                      <div className="phone-lyrics-card">
+                        <span>Lyrics mode</span>
+                        <p>Tus barras empiezan donde el beat se queda.</p>
+                      </div>
+                      <div className="phone-bottom-nav">
+                        <span />
+                        <span className="active" />
+                        <span />
+                      </div>
                     </div>
                   </div>
-                  <div className="phone-wave" />
-                  <div className="phone-meta-pills">
-                    <span>140 BPM</span>
-                    <span>Dark Trap</span>
-                    <span>Save</span>
+                </div>
+
+                <div className="hero-dashboard-shell">
+                  <div className="hero-dashboard-header">
+                    <div>
+                      <strong>Producer dashboard</strong>
+                      <span>Catalog performance</span>
+                    </div>
+                    <div className="dashboard-pill">Upload beat</div>
                   </div>
-                  <div className="phone-lyrics-card">
-                    <span>Lyrics mode</span>
-                    <p>Tus barras empiezan donde el beat se queda.</p>
+                  <div className="hero-dashboard-kpis">
+                    <div className="hero-dashboard-kpi">
+                      <span>Beats</span>
+                      <strong>48</strong>
+                    </div>
+                    <div className="hero-dashboard-kpi">
+                      <span>Saves</span>
+                      <strong>2.3k</strong>
+                    </div>
+                    <div className="hero-dashboard-kpi">
+                      <span>Plays</span>
+                      <strong>14.8k</strong>
+                    </div>
                   </div>
-                  <div className="phone-bottom-nav">
-                    <span />
-                    <span className="active" />
-                    <span />
+                  <div className="hero-dashboard-list">
+                    <div className="hero-dashboard-row">
+                      <span>Neon Pulse</span>
+                      <span>Trap</span>
+                      <span>132 BPM</span>
+                    </div>
+                    <div className="hero-dashboard-row">
+                      <span>Velvet Run</span>
+                      <span>R&B</span>
+                      <span>96 BPM</span>
+                    </div>
+                    <div className="hero-dashboard-row">
+                      <span>Night Circuit</span>
+                      <span>Drill</span>
+                      <span>145 BPM</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="hero-visual-card hero-visual-card-right top">
-              <span>02</span>
-              <p>Guarda favoritos y vuelve rápido al beat que encaja contigo.</p>
-            </div>
-
-            <div className="hero-visual-card hero-visual-card-right bottom">
-              <span>04</span>
-              <p>Los productores suben y gestionan beats desde la web con mejor presentación.</p>
+              <div className="hero-stage-badge hero-stage-badge-bottom">
+                <strong>Gestiona</strong>
+                <span>Sube, edita y presenta tu catálogo con una consola más seria.</span>
+              </div>
             </div>
           </div>
         </motion.section>
