@@ -6,67 +6,48 @@ import logo from '../../assets/Logo.png';
 import config from '../../config/apiConfig.json';
 
 const reveal = {
-  initial: { opacity: 0, y: 32 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.65, ease: 'easeOut' },
+  transition: { duration: 0.6, ease: 'easeOut' },
   viewport: { once: true, amount: 0.2 },
 };
 
-const appReasons = [
+const benefits = [
   {
-    index: '01',
-    title: 'Descubre beats como consumes música hoy',
-    description: 'Un feed vertical rápido, claro y pensado para entrar en modo creativo desde el primer scroll.',
+    title: 'Descubre beats con rapidez',
+    copy: 'Un feed móvil pensado para escuchar, comparar y encontrar el beat correcto sin perder tiempo.',
   },
   {
-    index: '02',
-    title: 'Guarda ideas antes de perder el momento',
-    description: 'Favoritos, loops y una experiencia hecha para volver rápido al beat correcto.',
+    title: 'Guarda lo que encaja contigo',
+    copy: 'Crea una biblioteca de favoritos y vuelve a la idea correcta cuando llegue el momento de escribir.',
   },
   {
-    index: '03',
-    title: 'Escribe sobre el beat sin salir del flujo',
-    description: 'BeatNow une escucha y escritura para que la canción empiece sin fricción.',
-  },
-  {
-    index: '04',
-    title: 'Sube y presenta tu catálogo como producto',
-    description: 'Los productores tienen una consola web limpia para publicar, editar y entender rendimiento.',
+    title: 'Escribe dentro del flujo',
+    copy: 'BeatNow une reproducción y escritura para que la canción empiece donde nace la inspiración.',
   },
 ];
 
-const featureRows = [
-  {
-    eyebrow: 'Mobile app',
-    title: 'La app está en el centro del producto',
-    description:
-      'El valor principal de BeatNow no es una página informativa. Es una experiencia móvil inmersiva donde descubrir beats y empezar una canción se siente natural.',
-    bullets: ['Feed vertical estilo short-form', 'Guardados y replay instantáneo', 'Editor de letras integrado'],
-  },
-  {
-    eyebrow: 'Producer dashboard',
-    title: 'La parte web existe para potenciar el catálogo',
-    description:
-      'El panel para productores acompaña a la app: sube beats, edita metadata, mejora presentación y entiende qué conecta con los artistas.',
-    bullets: ['Subida con metadata útil', 'Edición continua de portada y detalles', 'Visión clara de catálogo y stats'],
-  },
+const producerPoints = [
+  'Sube beats con metadata útil',
+  'Edita catálogo y presentación',
+  'Revisa rendimiento de forma clara',
 ];
 
 const flowSteps = [
   {
     step: '01',
-    title: 'El productor sube su beat',
-    description: 'Publica con género, mood, BPM e instrumentos para que el descubrimiento tenga contexto.',
+    title: 'El productor publica',
+    copy: 'Sube el beat con contexto: género, BPM, mood e instrumentos.',
   },
   {
     step: '02',
-    title: 'El artista encuentra el beat',
-    description: 'Explora el feed, escucha en segundos y guarda el instrumental que realmente dispara una idea.',
+    title: 'El artista descubre',
+    copy: 'Escucha, compara y guarda el beat que realmente dispara una idea.',
   },
   {
     step: '03',
-    title: 'La canción empieza dentro de la app',
-    description: 'El proceso sigue sin romperse: escuchar, repetir, escribir y volver al beat correcto.',
+    title: 'La canción empieza',
+    copy: 'El proceso sigue en la app, sin fricción y sin cambiar de herramienta.',
   },
 ];
 
@@ -76,13 +57,10 @@ const Landing: React.FC = () => {
 
   const betaUrl = React.useMemo(() => {
     const url = new URL(config.WEBAPP);
-
     if (email) {
       url.searchParams.set('email', email);
     }
-
     url.searchParams.set('role', selectedRole);
-
     return url.toString();
   }, [email, selectedRole]);
 
@@ -96,256 +74,188 @@ const Landing: React.FC = () => {
       <Header />
 
       <div className="landing-background" aria-hidden="true">
-        <div className="orb orb-one" />
-        <div className="orb orb-two" />
-        <div className="orb orb-three" />
-        <div className="landing-grid" />
+        <div className="ambient ambient-one" />
+        <div className="ambient ambient-two" />
+        <div className="ambient ambient-three" />
       </div>
 
       <main className="landing-main">
         <motion.section className="hero-section" {...reveal}>
           <div className="hero-copy">
-            <span className="hero-chip">Beat discovery for artists. Catalog growth for producers.</span>
-            <h1>La app para encontrar beats y empezar canciones más rápido.</h1>
-            <p className="hero-description">
-              BeatNow convierte el descubrimiento de beats en una experiencia moderna, visual y enfocada a móvil. Los artistas encuentran el beat correcto en segundos. Los productores lo presentan como un catálogo serio.
+            <span className="eyebrow">Beat discovery for artists. Dashboard for producers.</span>
+            <h1>Una forma más limpia de encontrar beats y empezar canciones.</h1>
+            <p className="hero-text">
+              BeatNow convierte el descubrimiento de beats en una experiencia móvil elegante, rápida y enfocada. Los artistas encuentran antes la idea correcta. Los productores presentan mejor su catálogo.
             </p>
 
             <div className="hero-actions">
               <a className="cta primary" href="#beta">
                 Entrar en la beta
               </a>
-              <a className="cta secondary" href="#app">
-                Ver la experiencia
+              <a className="cta secondary" href="#product">
+                Ver producto
               </a>
             </div>
 
-            <div className="hero-inline-stats">
-              <div className="hero-inline-stat">
+            <div className="hero-meta">
+              <div>
                 <strong>Mobile first</strong>
-                <span>Diseñado alrededor del gesto, el ritmo y el replay.</span>
+                <span>Descubrir, guardar y escribir.</span>
               </div>
-              <div className="hero-inline-stat">
+              <div>
                 <strong>Producer ready</strong>
-                <span>Catálogo, edición y métricas en una consola clara.</span>
+                <span>Catálogo, edición y claridad visual.</span>
               </div>
             </div>
           </div>
 
           <div className="hero-visual">
-            <div className="hero-stage-shell">
-              <div className="hero-stage-badge hero-stage-badge-top">
+            <div className="product-stage">
+              <div className="product-stage-copy product-stage-copy-top">
                 <strong>Descubre</strong>
-                <span>Feed vertical para encontrar el beat correcto en segundos.</span>
+                <span>Encuentra el beat correcto en segundos.</span>
               </div>
 
-              <div className="hero-stage-content">
-                <div className="hero-device-stage">
-                  <div className="hero-phone-shell">
-                    <div className="phone-glow" />
-                    <div className="hero-phone-ui" aria-label="Mockup móvil de BeatNow">
-                      <div className="phone-status-bar">
-                        <span>9:41</span>
-                        <span>BeatNow</span>
-                      </div>
-                      <div className="phone-cover-card">
-                        <div className="phone-cover-art" />
-                        <div className="phone-cover-copy">
-                          <strong>Midnight Bounce</strong>
-                          <span>Prod. Nova</span>
-                        </div>
-                      </div>
-                      <div className="phone-wave" />
-                      <div className="phone-meta-pills">
-                        <span>140 BPM</span>
-                        <span>Dark Trap</span>
-                        <span>Save</span>
-                      </div>
-                      <div className="phone-lyrics-card">
-                        <span>Lyrics mode</span>
-                        <p>Tus barras empiezan donde el beat se queda.</p>
-                      </div>
-                      <div className="phone-bottom-nav">
-                        <span />
-                        <span className="active" />
-                        <span />
-                      </div>
+              <div className="device-pair">
+                <div className="phone-mockup">
+                  <div className="phone-screen">
+                    <div className="phone-status">
+                      <span>9:41</span>
+                      <span>BeatNow</span>
+                    </div>
+                    <div className="phone-art" />
+                    <div className="phone-track">
+                      <strong>Midnight Bounce</strong>
+                      <span>Prod. Nova</span>
+                    </div>
+                    <div className="phone-wave" />
+                    <div className="phone-tags">
+                      <span>140 BPM</span>
+                      <span>Dark Trap</span>
+                    </div>
+                    <div className="phone-note">
+                      <small>Lyrics mode</small>
+                      <p>Tus barras empiezan aquí.</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="hero-dashboard-shell">
-                  <div className="hero-dashboard-header">
-                    <div>
-                      <strong>Producer dashboard</strong>
-                      <span>Catalog performance</span>
-                    </div>
-                    <div className="dashboard-pill">Upload beat</div>
+                <div className="desktop-mockup">
+                  <div className="desktop-bar">
+                    <span />
+                    <span />
+                    <span />
                   </div>
-                  <div className="hero-dashboard-kpis">
-                    <div className="hero-dashboard-kpi">
-                      <span>Beats</span>
-                      <strong>48</strong>
+                  <div className="desktop-content">
+                    <div className="desktop-head">
+                      <div>
+                        <strong>Producer dashboard</strong>
+                        <span>Catalog overview</span>
+                      </div>
+                      <div className="desktop-chip">Upload</div>
                     </div>
-                    <div className="hero-dashboard-kpi">
-                      <span>Saves</span>
-                      <strong>2.3k</strong>
+
+                    <div className="desktop-stats">
+                      <div>
+                        <span>Beats</span>
+                        <strong>48</strong>
+                      </div>
+                      <div>
+                        <span>Saves</span>
+                        <strong>2.3k</strong>
+                      </div>
+                      <div>
+                        <span>Plays</span>
+                        <strong>14.8k</strong>
+                      </div>
                     </div>
-                    <div className="hero-dashboard-kpi">
-                      <span>Plays</span>
-                      <strong>14.8k</strong>
-                    </div>
-                  </div>
-                  <div className="hero-dashboard-list">
-                    <div className="hero-dashboard-row">
-                      <span>Neon Pulse</span>
-                      <span>Trap</span>
-                      <span>132 BPM</span>
-                    </div>
-                    <div className="hero-dashboard-row">
-                      <span>Velvet Run</span>
-                      <span>R&B</span>
-                      <span>96 BPM</span>
-                    </div>
-                    <div className="hero-dashboard-row">
-                      <span>Night Circuit</span>
-                      <span>Drill</span>
-                      <span>145 BPM</span>
+
+                    <div className="desktop-list">
+                      <div className="desktop-row">
+                        <span>Neon Pulse</span>
+                        <span>Trap</span>
+                        <span>132 BPM</span>
+                      </div>
+                      <div className="desktop-row">
+                        <span>Velvet Run</span>
+                        <span>R&B</span>
+                        <span>96 BPM</span>
+                      </div>
+                      <div className="desktop-row">
+                        <span>Night Circuit</span>
+                        <span>Drill</span>
+                        <span>145 BPM</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="hero-stage-badge hero-stage-badge-bottom">
+              <div className="product-stage-copy product-stage-copy-bottom">
                 <strong>Gestiona</strong>
-                <span>Sube, edita y presenta tu catálogo con una consola más seria.</span>
+                <span>Sube, edita y presenta tu catálogo con más claridad.</span>
               </div>
             </div>
           </div>
         </motion.section>
 
-        <motion.section id="app" className="product-strip" {...reveal}>
-          <div className="product-strip-copy">
-            <span className="section-kicker">Por qué BeatNow</span>
-            <h2>Más cerca de la app. Menos marketing vacío.</h2>
+        <motion.section id="product" className="intro-section" {...reveal}>
+          <div className="section-copy">
+            <span className="section-label">Producto</span>
+            <h2>Menos ruido visual. Más foco en lo que importa.</h2>
             <p>
-              La landing tiene que vender una sensación muy concreta: BeatNow se siente actual, enfocado y pensado para una generación que descubre ideas desde el móvil, no desde listados eternos.
+              BeatNow no necesita parecer recargado para sentirse moderno. La experiencia gana cuando todo respira, la jerarquía está clara y el producto se entiende rápido.
             </p>
           </div>
+        </motion.section>
 
-          <div className="product-strip-grid">
-            {appReasons.map((item) => (
-              <article key={item.index} className="reason-card">
-                <span>{item.index}</span>
+        <motion.section id="para-artistas" className="benefits-section" {...reveal}>
+          <div className="section-copy">
+            <span className="section-label">Para artistas</span>
+            <h2>Una app pensada para escuchar con intención.</h2>
+          </div>
+
+          <div className="benefit-grid">
+            {benefits.map((item) => (
+              <article className="benefit-card" key={item.title}>
                 <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <p>{item.copy}</p>
               </article>
             ))}
           </div>
         </motion.section>
 
-        <motion.section id="demo" className="showcase-section" {...reveal}>
-          <div className="showcase-layout">
-            <div className="showcase-copy">
-              <span className="section-kicker">Experiencia visual</span>
-              <h2>Una interfaz oscura, limpia y construida alrededor del producto.</h2>
-              <p>
-                Inspirada en referencias más premium y tecnológicas, pero enfocada a lo que BeatNow realmente es: una app para crear más rápido y una web para operar el catálogo con claridad.
-              </p>
-            </div>
-
-            <div className="showcase-dashboard">
-              <div className="showcase-dashboard-topbar">
-                <span />
-                <span />
-                <span />
-              </div>
-              <div className="showcase-dashboard-ui" aria-label="Mockup del dashboard de productores">
-                <div className="dashboard-sidebar-mock">
-                  <span className="sidebar-dot active" />
-                  <span className="sidebar-dot" />
-                  <span className="sidebar-dot" />
-                  <span className="sidebar-dot" />
-                </div>
-                <div className="dashboard-main-mock">
-                  <div className="dashboard-top-row">
-                    <div className="dashboard-title-block">
-                      <strong>Producer Dashboard</strong>
-                      <span>Catalog overview</span>
-                    </div>
-                    <div className="dashboard-pill">Upload beat</div>
-                  </div>
-                  <div className="dashboard-kpi-row">
-                    <div className="dashboard-kpi-card">
-                      <span>Beats</span>
-                      <strong>48</strong>
-                    </div>
-                    <div className="dashboard-kpi-card">
-                      <span>Saves</span>
-                      <strong>2.3k</strong>
-                    </div>
-                    <div className="dashboard-kpi-card">
-                      <span>Plays</span>
-                      <strong>14.8k</strong>
-                    </div>
-                  </div>
-                  <div className="dashboard-list-card">
-                    <div className="dashboard-list-row">
-                      <span>Neon Pulse</span>
-                      <span>Trap</span>
-                      <span>132 BPM</span>
-                    </div>
-                    <div className="dashboard-list-row">
-                      <span>Velvet Run</span>
-                      <span>R&B</span>
-                      <span>96 BPM</span>
-                    </div>
-                    <div className="dashboard-list-row">
-                      <span>Night Circuit</span>
-                      <span>Drill</span>
-                      <span>145 BPM</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <motion.section id="para-productores" className="producer-section" {...reveal}>
+          <div className="section-copy">
+            <span className="section-label">Para productores</span>
+            <h2>La web acompaña a la app, no compite con ella.</h2>
+            <p>
+              El dashboard existe para que tu catálogo se vea bien, se mantenga ordenado y puedas tomar decisiones con más contexto.
+            </p>
           </div>
-        </motion.section>
 
-        <motion.section id="para-artistas" className="feature-section" {...reveal}>
-          <div className="feature-stack">
-            {featureRows.map((feature) => (
-              <article key={feature.title} className="feature-panel">
-                <div className="feature-copy">
-                  <span className="feature-eyebrow">{feature.eyebrow}</span>
-                  <h2>{feature.title}</h2>
-                  <p>{feature.description}</p>
-                </div>
-                <div className="feature-bullets">
-                  {feature.bullets.map((bullet) => (
-                    <div className="feature-bullet" key={bullet}>
-                      <span className="feature-bullet-dot" aria-hidden="true" />
-                      <span>{bullet}</span>
-                    </div>
-                  ))}
-                </div>
-              </article>
+          <div className="producer-panel">
+            {producerPoints.map((point) => (
+              <div className="producer-point" key={point}>
+                <span className="producer-dot" aria-hidden="true" />
+                <span>{point}</span>
+              </div>
             ))}
           </div>
         </motion.section>
 
         <motion.section id="como-funciona" className="flow-section" {...reveal}>
-          <div className="section-heading center">
-            <span className="section-kicker">Cómo funciona</span>
-            <h2>Un flujo simple, rápido y centrado en la canción.</h2>
+          <div className="section-copy center">
+            <span className="section-label">Cómo funciona</span>
+            <h2>Un flujo simple para pasar del beat a la canción.</h2>
           </div>
 
           <div className="flow-grid">
             {flowSteps.map((item) => (
-              <article key={item.step} className="flow-card">
+              <article className="flow-card" key={item.step}>
                 <span className="flow-step">{item.step}</span>
                 <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <p>{item.copy}</p>
               </article>
             ))}
           </div>
@@ -353,10 +263,10 @@ const Landing: React.FC = () => {
 
         <motion.section id="beta" className="beta-section" {...reveal}>
           <div className="beta-copy">
-            <span className="section-kicker">Beta privada</span>
-            <h2>Entra antes y ayúdanos a pulir la mejor versión de BeatNow.</h2>
+            <span className="section-label">Beta privada</span>
+            <h2>Entra pronto y ayúdanos a pulir la mejor versión de BeatNow.</h2>
             <p>
-              Estamos activando acceso progresivo para artistas y productores que realmente trabajan con beats cada semana y pueden validar el producto con contexto real.
+              Estamos activando acceso progresivo para artistas y productores que realmente trabajan con beats y pueden validar el producto con contexto real.
             </p>
           </div>
 
@@ -374,9 +284,8 @@ const Landing: React.FC = () => {
               />
             </label>
 
-            <fieldset className="form-field beta-role-field">
+            <fieldset className="form-field role-fieldset">
               <legend>Quiero entrar como</legend>
-
               <div className="role-switch">
                 <label className={`role-option ${selectedRole === 'artista' ? 'active' : ''}`}>
                   <input
@@ -411,19 +320,15 @@ const Landing: React.FC = () => {
 
         <section className="legal-section">
           <article id="privacidad" className="legal-card">
-            <span className="section-kicker">Privacidad</span>
+            <span className="section-label">Privacidad</span>
             <h2>Cómo tratamos tus datos</h2>
-            <p>
-              Solo recogemos la información necesaria para gestionar el acceso a la beta, comunicarnos contigo y mejorar el producto. No vendemos datos a terceros.
-            </p>
+            <p>Solo recogemos la información necesaria para gestionar el acceso a la beta y mejorar el producto.</p>
           </article>
 
           <article id="terminos" className="legal-card">
-            <span className="section-kicker">Términos</span>
+            <span className="section-label">Términos</span>
             <h2>Uso básico de la plataforma</h2>
-            <p>
-              El acceso beta está sujeto a disponibilidad y evolución del producto. Cada usuario mantiene la responsabilidad sobre los derechos del contenido que comparte.
-            </p>
+            <p>El acceso beta está sujeto a disponibilidad y evolución del producto. Cada usuario mantiene la responsabilidad sobre su contenido.</p>
           </article>
         </section>
       </main>
@@ -436,8 +341,7 @@ const Landing: React.FC = () => {
           </div>
           <div className="footer-links">
             <h4>Producto</h4>
-            <a href="#app">App</a>
-            <a href="#demo">Demo</a>
+            <a href="#product">Producto</a>
             <a href="#beta">Beta</a>
           </div>
           <div className="footer-links">
