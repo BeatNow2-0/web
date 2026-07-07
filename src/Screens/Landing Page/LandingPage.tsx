@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import './LandingPage.css';
 import Header from '../../Layout/Header/Header';
 import logo from '../../assets/Logo.png';
-import config from '../../config/apiConfig.json';
+import { WEBAPP_URL } from '../../config/apiConfig';
 
 const reveal = {
   initial: { opacity: 0, y: 24 },
@@ -56,7 +56,7 @@ const Landing: React.FC = () => {
   const [email, setEmail] = React.useState('');
 
   const betaUrl = React.useMemo(() => {
-    const url = new URL(config.WEBAPP);
+    const url = new URL(WEBAPP_URL);
     if (email) {
       url.searchParams.set('email', email);
     }
@@ -93,7 +93,7 @@ const Landing: React.FC = () => {
             </p>
 
             <div className="hero-actions">
-              <a className="cta primary" href={config.WEBAPP} target="_blank" rel="noreferrer">
+              <a className="cta primary" href={WEBAPP_URL} target="_blank" rel="noreferrer">
                 Ir a app-web y registrarme
               </a>
               <a className="cta secondary" href="#beta">

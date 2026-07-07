@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../assets/Logo.png';
 import './Header.css';
-import config from "../../config/apiConfig.json"
+import { WEBAPP_URL } from '../../config/apiConfig';
 
 const navigationLinks = [
   { href: '#para-artistas', label: 'Artistas' },
@@ -38,7 +38,7 @@ const Header: React.FC = () => {
       <div className="header-actions">
         <a
           className="btn btn-primary header-cta"
-          href={config.WEBAPP}
+          href={WEBAPP_URL}
           target="_blank"
           rel="noreferrer"
         >
@@ -68,7 +68,7 @@ const Header: React.FC = () => {
           ))}
           <a
             className="btn btn-primary mobile-nav-cta"
-            href={config.WEBAPP}
+            href={WEBAPP_URL}
             target="_blank"
             rel="noreferrer"
             onClick={handleNavigate}
