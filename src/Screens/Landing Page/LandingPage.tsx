@@ -1,362 +1,179 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import './LandingPage.css';
 import Header from '../../Layout/Header/Header';
-import logo from '../../assets/Logo.png';
 import { WEBAPP_URL } from '../../config/apiConfig';
+import './LandingPage.css';
 
-const reveal = {
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: 'easeOut' },
-  viewport: { once: true, amount: 0.2 },
-};
-
-const benefits = [
-  {
-    title: 'Descubre beats con rapidez',
-    copy: 'Un feed móvil pensado para escuchar, comparar y encontrar el beat correcto sin perder tiempo.',
-  },
-  {
-    title: 'Guarda lo que encaja contigo',
-    copy: 'Crea una biblioteca de favoritos y vuelve a la idea correcta cuando llegue el momento de escribir.',
-  },
-  {
-    title: 'Escribe dentro del flujo',
-    copy: 'BeatNow une reproducción y escritura para que la canción empiece donde nace la inspiración.',
-  },
+const artistBenefits = [
+  ['01', 'Descubre sin perder el foco', 'Explora beats por sonido, género y energía en un feed pensado para escuchar.'],
+  ['02', 'Guarda tus mejores ideas', 'Reúne favoritos y vuelve a ellos cuando estés listo para escribir.'],
+  ['03', 'Encuentra a quien está detrás', 'Conoce al productor de cada beat y descubre más de su catálogo.'],
 ];
 
-const producerPoints = [
-  'Sube beats con metadata útil',
-  'Edita catálogo y presentación',
-  'Revisa rendimiento de forma clara',
+const producerBenefits = [
+  ['Publica con contexto', 'Añade BPM, género, mood e instrumentos para que tu beat llegue a quien lo busca.'],
+  ['Cuida tu catálogo', 'Edita y organiza tus beats desde un espacio diseñado para productores.'],
+  ['Entiende qué conecta', 'Consulta la actividad de tu catálogo y detecta qué despierta interés.'],
 ];
 
-const flowSteps = [
-  {
-    step: '01',
-    title: 'El productor publica',
-    copy: 'Sube el beat con contexto: género, BPM, mood e instrumentos.',
-  },
-  {
-    step: '02',
-    title: 'El artista descubre',
-    copy: 'Escucha, compara y guarda el beat que realmente dispara una idea.',
-  },
-  {
-    step: '03',
-    title: 'La canción empieza',
-    copy: 'El proceso sigue en la app, sin fricción y sin cambiar de herramienta.',
-  },
+const flow = [
+  ['Publica', 'El productor prepara el beat y completa su información.'],
+  ['Descubre', 'El artista escucha, compara y guarda lo que encaja con su idea.'],
+  ['Conecta', 'Cada beat abre una puerta para descubrir al productor y su sonido.'],
 ];
 
-const Landing: React.FC = () => {
-  const [selectedRole, setSelectedRole] = React.useState<'artista' | 'productor'>('artista');
-  const [email, setEmail] = React.useState('');
+const ArrowIcon = () => (
+  <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18">
+    <path d="M4 10h11M11 6l4 4-4 4" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.7" />
+  </svg>
+);
 
-  const betaUrl = React.useMemo(() => {
-    const url = new URL(WEBAPP_URL);
-    if (email) {
-      url.searchParams.set('email', email);
-    }
-    url.searchParams.set('role', selectedRole);
-    return url.toString();
-  }, [email, selectedRole]);
+const PlayIcon = () => (
+  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
+    <path d="m9 7 8 5-8 5V7Z" fill="currentColor" />
+  </svg>
+);
 
-  const handleBetaSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    window.open(betaUrl, '_blank', 'noopener,noreferrer');
-  };
-
+export default function LandingPage() {
   return (
     <div className="landing-page" id="inicio">
+      <a className="skip-link" href="#contenido">Saltar al contenido</a>
       <Header />
 
-      <div className="landing-background" aria-hidden="true">
-        <div className="ambient ambient-one" />
-        <div className="ambient ambient-two" />
-        <div className="ambient ambient-three" />
-      </div>
-
-      <main className="landing-main">
-        <motion.section className="hero-section" {...reveal}>
+      <main id="contenido">
+        <section className="hero section-shell" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <span className="eyebrow">Beat discovery for artists. Dashboard for producers.</span>
-            <div className="hero-brand">
-              <img src={logo} alt="BeatNow" />
-              <span>BeatNow</span>
-            </div>
-            <h1>Una forma más limpia de encontrar beats y empezar canciones.</h1>
-            <p className="hero-text">
-              BeatNow convierte el descubrimiento de beats en una experiencia móvil elegante, rápida y enfocada. Los artistas encuentran antes la idea correcta. Los productores presentan mejor su catálogo.
+            <p className="kicker"><span aria-hidden="true" /> Beta abierta para artistas y productores</p>
+            <h1 id="hero-title">El beat que convierte una idea en canción.</h1>
+            <p className="hero-lead">
+              Descubre y guarda beats como artista. Publica y gestiona tu catálogo como productor.
+              Todo en un espacio creado para que la música avance.
             </p>
-
             <div className="hero-actions">
-              <a className="cta primary" href={WEBAPP_URL} target="_blank" rel="noreferrer">
-                Ir a app-web y registrarme
+              <a className="button button-primary" href={WEBAPP_URL}>
+                Crear mi cuenta <ArrowIcon />
               </a>
-              <a className="cta secondary" href="#beta">
-                Entrar en la beta
-              </a>
+              <a className="button button-secondary" href="#producto">Ver el producto</a>
             </div>
-
-            <div className="hero-note">
-              Una app pensada para artistas. Una consola web pensada para productores.
-            </div>
+            <p className="hero-detail">Registro gratuito · Acceso beta</p>
           </div>
 
-          <div className="hero-visual">
-            <div className="hero-stage">
-              <div className="hero-stage-card hero-stage-card-top">
-                <strong>Descubre</strong>
-                <span>Encuentra el beat correcto en segundos.</span>
+          <div className="product-composition" aria-label="Vista previa de BeatNow">
+            <div className="composition-glow" aria-hidden="true" />
+            <div className="dashboard-preview" aria-hidden="true">
+              <div className="preview-topbar">
+                <span className="preview-logo">B</span>
+                <span>Mi catálogo</span>
+                <span className="preview-action">+ Subir beat</span>
               </div>
-
-              <div className="phone-mockup hero-phone">
-                <div className="phone-screen">
-                  <div className="phone-status">
-                    <span>9:41</span>
-                    <span>BeatNow</span>
-                  </div>
-                  <div className="phone-art" />
-                  <div className="phone-track">
-                    <strong>Midnight Bounce</strong>
-                    <span>Prod. Nova</span>
-                  </div>
-                  <div className="phone-wave" />
-                  <div className="phone-tags">
-                    <span>140 BPM</span>
-                    <span>Dark Trap</span>
-                  </div>
-                  <div className="phone-note">
-                    <small>Lyrics mode</small>
-                    <p>Tus barras empiezan aquí.</p>
-                  </div>
-                </div>
+              <div className="preview-heading">
+                <div><small>BUENOS DÍAS</small><strong>Tu música, en orden.</strong></div>
+                <span className="status-pill">12 publicados</span>
               </div>
-
-              <div className="hero-stage-card hero-stage-card-bottom">
-                <strong>Escribe</strong>
-                <span>Guarda favoritos, repite el beat y entra en modo creativo sin fricción.</span>
+              <div className="stat-row">
+                <div><small>Reproducciones</small><strong>1.284</strong><span>últimos 30 días</span></div>
+                <div><small>Guardados</small><strong>96</strong><span>últimos 30 días</span></div>
+              </div>
+              <div className="catalog-list">
+                <div className="catalog-title"><strong>Beats recientes</strong><span>Ver catálogo</span></div>
+                <div className="track-row"><span className="cover cover-one" /><strong>Sin gravedad</strong><span>Trap · 142 BPM</span><i>•••</i></div>
+                <div className="track-row"><span className="cover cover-two" /><strong>Otra noche</strong><span>R&B · 94 BPM</span><i>•••</i></div>
+                <div className="track-row"><span className="cover cover-three" /><strong>Distrito</strong><span>Drill · 138 BPM</span><i>•••</i></div>
               </div>
             </div>
-          </div>
-        </motion.section>
 
-        <motion.section id="product" className="intro-section" {...reveal}>
-          <div className="product-overview">
-            <div className="section-copy">
-              <span className="section-label">Producto</span>
-              <h2>Primero una experiencia clara. Después, contexto sobre la app.</h2>
-              <p>
-                BeatNow está dividido en dos piezas que trabajan juntas: una app móvil para descubrir beats y escribir sobre ellos, y una consola web para que los productores suban, editen y cuiden su catálogo.
-              </p>
-            </div>
-
-            <div className="product-overview-card">
-              <div className="desktop-mockup">
-                <div className="desktop-bar">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <div className="desktop-content">
-                  <div className="desktop-head">
-                    <div>
-                      <strong>Producer dashboard</strong>
-                      <span>Catalog overview</span>
-                    </div>
-                    <div className="desktop-chip">Upload</div>
-                  </div>
-
-                  <div className="desktop-stats">
-                    <div>
-                      <span>Beats</span>
-                      <strong>48</strong>
-                    </div>
-                    <div>
-                      <span>Saves</span>
-                      <strong>2.3k</strong>
-                    </div>
-                    <div>
-                      <span>Plays</span>
-                      <strong>14.8k</strong>
-                    </div>
-                  </div>
-
-                  <div className="desktop-list">
-                    <div className="desktop-row">
-                      <span>Neon Pulse</span>
-                      <span>Trap</span>
-                      <span>132 BPM</span>
-                    </div>
-                    <div className="desktop-row">
-                      <span>Velvet Run</span>
-                      <span>R&B</span>
-                      <span>96 BPM</span>
-                    </div>
-                    <div className="desktop-row">
-                      <span>Night Circuit</span>
-                      <span>Drill</span>
-                      <span>145 BPM</span>
-                    </div>
-                  </div>
-                </div>
+            <div className="phone-preview" aria-hidden="true">
+              <div className="phone-header"><span>9:41</span><strong>beatnow</strong><span>•••</span></div>
+              <div className="phone-cover">
+                <span className="cover-label">DARK TRAP</span>
+                <span className="cover-mark">BN</span>
               </div>
+              <div className="phone-track-copy"><div><strong>Sin gravedad</strong><span>nvrth · 142 BPM</span></div><button tabIndex={-1}><PlayIcon /></button></div>
+              <div className="waveform">{Array.from({ length: 22 }).map((_, index) => <i key={index} />)}</div>
+              <div className="phone-tags"><span>Trap</span><span>Oscuro</span><span>Melódico</span></div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section id="para-artistas" className="benefits-section" {...reveal}>
-          <div className="section-copy">
-            <span className="section-label">Para artistas</span>
-            <h2>Una app pensada para escuchar con intención.</h2>
+        <section className="signal-strip" aria-label="Qué ofrece BeatNow">
+          <span>DESCUBRE</span><i aria-hidden="true" />
+          <span>ESCUCHA</span><i aria-hidden="true" />
+          <span>GUARDA</span><i aria-hidden="true" />
+          <span>PUBLICA</span><i aria-hidden="true" />
+          <span>CONECTA</span>
+        </section>
+
+        <section id="producto" className="content-section section-shell" aria-labelledby="artists-title">
+          <div className="section-intro">
+            <p className="section-label">PARA ARTISTAS</p>
+            <h2 id="artists-title">Menos tiempo buscando.<br />Más tiempo creando.</h2>
+            <p>BeatNow pone cada beat en contexto para que puedas decidir rápido y conservar lo que inspira una canción.</p>
           </div>
-
-          <div className="benefit-grid">
-            {benefits.map((item) => (
-              <article className="benefit-card" key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.copy}</p>
+          <div className="feature-list">
+            {artistBenefits.map(([number, title, copy]) => (
+              <article className="feature-row" key={number}>
+                <span className="feature-number">{number}</span>
+                <div><h3>{title}</h3><p>{copy}</p></div>
               </article>
             ))}
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section id="para-productores" className="producer-section" {...reveal}>
-          <div className="section-copy">
-            <span className="section-label">Para productores</span>
-            <h2>La web acompaña a la app, no compite con ella.</h2>
-            <p>
-              El dashboard existe para que tu catálogo se vea bien, se mantenga ordenado y puedas tomar decisiones con más contexto.
-            </p>
+        <section id="productores" className="producer-section">
+          <div className="section-shell producer-grid">
+            <div className="producer-copy">
+              <p className="section-label">PARA PRODUCTORES</p>
+              <h2>Tu catálogo merece algo mejor que una carpeta.</h2>
+              <p>Presenta cada beat con claridad y gestiona todo desde un dashboard sencillo, sin ruido ni herramientas que sobran.</p>
+              <a className="text-link" href={WEBAPP_URL}>Publicar mis beats <ArrowIcon /></a>
+            </div>
+            <div className="producer-list">
+              {producerBenefits.map(([title, copy], index) => (
+                <article key={title}>
+                  <span>0{index + 1}</span>
+                  <div><h3>{title}</h3><p>{copy}</p></div>
+                </article>
+              ))}
+            </div>
           </div>
+        </section>
 
-          <div className="producer-panel">
-            {producerPoints.map((point) => (
-              <div className="producer-point" key={point}>
-                <span className="producer-dot" aria-hidden="true" />
-                <span>{point}</span>
-              </div>
+        <section id="como-funciona" className="flow-section section-shell" aria-labelledby="flow-title">
+          <div className="section-intro compact">
+            <p className="section-label">CÓMO FUNCIONA</p>
+            <h2 id="flow-title">Del beat a la conexión.</h2>
+          </div>
+          <ol className="flow-list">
+            {flow.map(([title, copy], index) => (
+              <li key={title}><span>{index + 1}</span><h3>{title}</h3><p>{copy}</p></li>
             ))}
-          </div>
-        </motion.section>
+          </ol>
+        </section>
 
-        <motion.section id="como-funciona" className="flow-section" {...reveal}>
-          <div className="section-copy center">
-            <span className="section-label">Cómo funciona</span>
-            <h2>Un flujo simple para pasar del beat a la canción.</h2>
-          </div>
-
-          <div className="flow-grid">
-            {flowSteps.map((item) => (
-              <article className="flow-card" key={item.step}>
-                <span className="flow-step">{item.step}</span>
-                <h3>{item.title}</h3>
-                <p>{item.copy}</p>
-              </article>
-            ))}
-          </div>
-        </motion.section>
-
-        <motion.section id="beta" className="beta-section" {...reveal}>
-          <div className="beta-copy">
-            <span className="section-label">Beta privada</span>
-            <h2>Entra pronto y ayúdanos a pulir la mejor versión de BeatNow.</h2>
-            <p>
-              Estamos activando acceso progresivo para artistas y productores que realmente trabajan con beats y pueden validar el producto con contexto real.
-            </p>
-          </div>
-
-          <form className="beta-form" onSubmit={handleBetaSubmit}>
-            <label className="form-field">
-              Correo
-              <input
-                type="email"
-                name="email"
-                placeholder="tu@email.com"
-                autoComplete="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                required
-              />
-            </label>
-
-            <fieldset className="form-field role-fieldset">
-              <legend>Quiero entrar como</legend>
-              <div className="role-switch">
-                <label className={`role-option ${selectedRole === 'artista' ? 'active' : ''}`}>
-                  <input
-                    type="radio"
-                    name="role"
-                    value="artista"
-                    checked={selectedRole === 'artista'}
-                    onChange={() => setSelectedRole('artista')}
-                  />
-                  <span>Artista</span>
-                </label>
-
-                <label className={`role-option ${selectedRole === 'productor' ? 'active' : ''}`}>
-                  <input
-                    type="radio"
-                    name="role"
-                    value="productor"
-                    checked={selectedRole === 'productor'}
-                    onChange={() => setSelectedRole('productor')}
-                  />
-                  <span>Productor</span>
-                </label>
-              </div>
-            </fieldset>
-
-            <button type="submit" className="cta primary full">
-              Continuar al registro
-            </button>
-            <p className="form-footnote">Al continuar aceptas nuestra política de privacidad y términos de uso resumidos.</p>
-          </form>
-        </motion.section>
-
-        <section className="legal-section">
-          <article id="privacidad" className="legal-card">
-            <span className="section-label">Privacidad</span>
-            <h2>Cómo tratamos tus datos</h2>
-            <p>Solo recogemos la información necesaria para gestionar el acceso a la beta y mejorar el producto.</p>
-          </article>
-
-          <article id="terminos" className="legal-card">
-            <span className="section-label">Términos</span>
-            <h2>Uso básico de la plataforma</h2>
-            <p>El acceso beta está sujeto a disponibilidad y evolución del producto. Cada usuario mantiene la responsabilidad sobre su contenido.</p>
-          </article>
+        <section className="final-cta section-shell" aria-labelledby="cta-title">
+          <p className="section-label">BEATNOW BETA</p>
+          <h2 id="cta-title">Tu próximo tema puede empezar aquí.</h2>
+          <p>Crea tu cuenta, elige tu perfil y empieza a explorar BeatNow.</p>
+          <a className="button button-light" href={WEBAPP_URL}>Crear mi cuenta <ArrowIcon /></a>
         </section>
       </main>
 
-      <footer className="landing-footer">
-        <div className="footer-grid">
-          <div className="footer-brand">
-            <img src={logo} alt="BeatNow" />
-            <p>BeatNow conecta beats, artistas y productores en una experiencia moderna centrada en la creación.</p>
-          </div>
-          <div className="footer-links">
-            <h4>Producto</h4>
-            <a href="#product">Producto</a>
-            <a href="#beta">Beta</a>
-          </div>
-          <div className="footer-links">
-            <h4>Contacto</h4>
-            <a href="mailto:hola@beatnow.app">hola@beatnow.app</a>
-            <a href="tel:+34692903572">+34 692903572</a>
-          </div>
-          <div className="footer-links">
-            <h4>Legal</h4>
-            <a href="#privacidad">Política de privacidad</a>
-            <a href="#terminos">Términos de uso</a>
-          </div>
+      <footer className="footer section-shell">
+        <div className="footer-main">
+          <a className="footer-brand" href="#inicio" aria-label="BeatNow, volver al inicio">
+            <span aria-hidden="true">B</span><strong>BeatNow</strong>
+          </a>
+          <p>El punto de encuentro entre beats, artistas y productores.</p>
+          <nav aria-label="Enlaces del pie">
+            <a href="#producto">Para artistas</a>
+            <a href="#productores">Para productores</a>
+            <a href="#como-funciona">Cómo funciona</a>
+            <a href="mailto:hola@beatnow.app">Contacto</a>
+          </nav>
+        </div>
+        <div className="footer-meta">
+          <span>© {new Date().getFullYear()} BeatNow</span>
+          <span>Beta en evolución</span>
         </div>
       </footer>
     </div>
   );
-};
-
-export default Landing;
+}

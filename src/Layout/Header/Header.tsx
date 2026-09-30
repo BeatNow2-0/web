@@ -1,84 +1,64 @@
-import React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import logo from '../../assets/Logo.png';
-import './Header.css';
 import { WEBAPP_URL } from '../../config/apiConfig';
+import './Header.css';
 
-const navigationLinks = [
-  { href: '#para-artistas', label: 'Artistas' },
-  { href: '#para-productores', label: 'Productores' },
-  { href: '#product', label: 'Producto' },
+const links = [
+  { href: '#producto', label: 'Para artistas' },
+  { href: '#productores', label: 'Para productores' },
   { href: '#como-funciona', label: 'Cómo funciona' },
-  { href: '#beta', label: 'Beta' },
 ];
 
-const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
-  const handleNavigate = () => {
-    setIsMenuOpen(false);
-  };
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isOpen]);
 
   return (
-    <header className="header">
-      <div className="logo">
-        <a href="#inicio" aria-label="BeatNow">
-          <img className="logoPng" src={logo} alt="BeatNow" />
-          <span className="logoWord">BeatNow</span>
-        </a>
-      </div>
+    <header className="site-header">
+      <a className="brand" href="#inicio" aria-label="BeatNow, inicio">
+        <img src={logo} alt="" width="40" height="43" />
+        <span>BeatNow</span>
+      </a>
 
-      <nav className="nav-links" aria-label="Secciones principales">
-        {navigationLinks.map((link) => (
-          <a key={link.href} className="nav-link" href={link.href}>
-            {link.label}
-          </a>
-        ))}
+      <nav className="desktop-nav" aria-label="Navegación principal">
+        {links.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
       </nav>
 
       <div className="header-actions">
-        <a
-          className="btn btn-primary header-cta"
-          href={WEBAPP_URL}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Únete a la beta
-        </a>
-
+        <a className="header-cta" href={WEBAPP_URL}>Crear mi cuenta</a>
         <button
-          type="button"
+          ref={toggleRef}
           className="menu-toggle"
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-navigation"
-          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
-          onClick={() => setIsMenuOpen((current) => !current)}
+          type="button"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+          onClick={() => setIsOpen((current) => !current)}
         >
-          <span />
-          <span />
-          <span />
+          <span /><span />
         </button>
       </div>
 
-      <div className={`mobile-nav-panel ${isMenuOpen ? 'open' : ''}`} id="mobile-navigation">
-        <nav className="mobile-nav-links" aria-label="Secciones principales móvil">
-          {navigationLinks.map((link) => (
-            <a key={link.href} className="mobile-nav-link" href={link.href} onClick={handleNavigate}>
-              {link.label}
-            </a>
-          ))}
-          <a
-            className="btn btn-primary mobile-nav-cta"
-            href={WEBAPP_URL}
-            target="_blank"
-            rel="noreferrer"
-            onClick={handleNavigate}
-          >
-            Registrarme ahora
-          </a>
+      {isOpen && (
+        <nav className="mobile-menu" id="mobile-menu" aria-label="Navegación móvil">
+          {links.map((link) => <a key={link.href} href={link.href} onClick={() => setIsOpen(false)}>{link.label}</a>)}
+          <a className="mobile-cta" href={WEBAPP_URL}>Crear mi cuenta</a>
         </nav>
-      </div>
+      )}
     </header>
   );
-};
-
-export default Header;
+}
