@@ -1,22 +1,24 @@
-const defaultApiBaseUrl = 'https://api.beatnow.app';
-const defaultWebappUrl = 'https://app.beatnow.app/register';
-const envApiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim();
-const envWebappUrl = import.meta.env.VITE_WEBAPP_URL?.trim();
-const baseUrl = (envApiBaseUrl || defaultApiBaseUrl).replace(/\/$/, '');
-const devProxyPrefix = import.meta.env.VITE_API_PROXY_PREFIX?.trim() || '';
+const DEFAULT_WEBAPP_URL = 'https://app.beatnow.app/register';
+const ALLOWED_WEBAPP_HOSTS = new Set(['app.beatnow.app', 'localhost', '127.0.0.1']);
 
-export const API_BASE_URL = baseUrl;
-export const WEBAPP_URL = envWebappUrl || defaultWebappUrl;
+function getWebappUrl(): string {
+  const configuredUrl = import.meta.env.VITE_WEBAPP_URL?.trim();
 
-export const buildApiUrl = (path: string = ''): string => {
-  if (import.meta.env.DEV) {
-    const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-    return `${devProxyPrefix}${normalizedPath}`;
+  if (!configuredUrl) return DEFAULT_WEBAPP_URL;
+
+  try {
+    const url = new URL(configuredUrl);
+    const isLocalDevelopment = import.meta.env.DEV && (url.protocol === 'http:' || url.protocol === 'https:');
+    const isProductionApp = url.protocol === 'https:' && url.hostname === 'app.beatnow.app';
+
+    if (!ALLOWED_WEBAPP_HOSTS.has(url.hostname) || (!isLocalDevelopment && !isProductionApp)) {
+      return DEFAULT_WEBAPP_URL;
+    }
+
+    return url.toString();
+  } catch {
+    return DEFAULT_WEBAPP_URL;
   }
+}
 
-  if (!path) {
-    return baseUrl;
-  }
-
-  return `${baseUrl}${path.startsWith('/') ? '' : '/'}${path}`;
-};
+export const WEBAPP_URL = getWebappUrl();
