@@ -2,14 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import logo from '../../assets/Logo.png';
 import { WEBAPP_URL } from '../../config/apiConfig';
 import './Header.css';
-
-const links = [
-  { href: '#producto', label: 'Para artistas' },
-  { href: '#productores', label: 'Para productores' },
-  { href: '#como-funciona', label: 'Cómo funciona' },
-];
+import { useLanguage } from '../../i18n';
 
 export default function Header() {
+  const { language, setLanguage } = useLanguage();
+  const es = language === 'es';
+  const links = [
+    { href: '#producto', label: es ? 'Para artistas' : 'For artists' },
+    { href: '#productores', label: es ? 'Para productores' : 'For producers' },
+    { href: '#como-funciona', label: es ? 'Cómo funciona' : 'How it works' },
+  ];
   const [isOpen, setIsOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
@@ -34,19 +36,25 @@ export default function Header() {
         <span>BeatNow</span>
       </a>
 
-      <nav className="desktop-nav" aria-label="Navegación principal">
+      <nav className="desktop-nav" aria-label={es ? 'Navegación principal' : 'Main navigation'}>
         {links.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
       </nav>
 
       <div className="header-actions">
-        <a className="header-cta" href={WEBAPP_URL}>Crear mi cuenta</a>
+        <label className="language-picker">
+          <span className="visually-hidden">{es ? 'Idioma' : 'Language'}</span>
+          <select aria-label={es ? 'Idioma' : 'Language'} value={language} onChange={(event) => setLanguage(event.target.value as 'en' | 'es')}>
+            <option value="en">EN</option><option value="es">ES</option>
+          </select>
+        </label>
+        <a className="header-cta" href={WEBAPP_URL}>{es ? 'Crear mi cuenta' : 'Create account'}</a>
         <button
           ref={toggleRef}
           className="menu-toggle"
           type="button"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
-          aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-label={isOpen ? (es ? 'Cerrar menú' : 'Close menu') : (es ? 'Abrir menú' : 'Open menu')}
           onClick={() => setIsOpen((current) => !current)}
         >
           <span /><span />
@@ -54,9 +62,9 @@ export default function Header() {
       </div>
 
       {isOpen && (
-        <nav className="mobile-menu" id="mobile-menu" aria-label="Navegación móvil">
+        <nav className="mobile-menu" id="mobile-menu" aria-label={es ? 'Navegación móvil' : 'Mobile navigation'}>
           {links.map((link) => <a key={link.href} href={link.href} onClick={() => setIsOpen(false)}>{link.label}</a>)}
-          <a className="mobile-cta" href={WEBAPP_URL}>Crear mi cuenta</a>
+          <a className="mobile-cta" href={WEBAPP_URL}>{es ? 'Crear mi cuenta' : 'Create account'}</a>
         </nav>
       )}
     </header>

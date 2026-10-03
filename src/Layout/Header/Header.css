@@ -31,3 +31,13 @@
 }
 
 @media (max-width: 350px) { .header-cta { display: none; } }
+.language-picker select {
+  color: inherit;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.55rem 0.65rem;
+  font: inherit;
+  cursor: pointer;
+}
+.language-picker option { color: #111; }
