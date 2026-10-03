@@ -13,7 +13,7 @@ const copy: Record<string, string> = {
   'Descubre sin perder el foco': 'Discover without losing focus', 'Explora beats por sonido, género y energía en un feed pensado para escuchar.': 'Explore beats by sound, genre and energy in a feed made for listening.', 'Guarda tus mejores ideas': 'Save your best ideas', 'Reúne favoritos y vuelve a ellos cuando estés listo para escribir.': 'Collect favourites and return when you are ready to write.', 'Encuentra a quien está detrás': 'Meet the producer behind the beat', 'Conoce al productor de cada beat y descubre más de su catálogo.': 'Meet each beat’s producer and explore more of their catalogue.',
   'PARA PRODUCTORES': 'FOR PRODUCERS', 'Tu catálogo merece algo mejor que una carpeta.': 'Your catalogue deserves more than a folder.', 'Presenta cada beat con claridad y gestiona todo desde un dashboard sencillo, sin ruido ni herramientas que sobran.': 'Present every beat clearly and manage everything from a simple dashboard, without clutter or unnecessary tools.', 'Publicar mis beats': 'Publish my beats', 'Publica con contexto': 'Publish with context', 'Añade BPM, género, mood e instrumentos para que tu beat llegue a quien lo busca.': 'Add BPM, genre, mood and instruments so your beat reaches the right people.', 'Cuida tu catálogo': 'Take care of your catalogue', 'Edita y organiza tus beats desde un espacio diseñado para productores.': 'Edit and organize your beats in a space designed for producers.', 'Entiende qué conecta': 'See what resonates', 'Consulta la actividad de tu catálogo y detecta qué despierta interés.': 'Track catalogue activity and see what sparks interest.',
   'CÓMO FUNCIONA': 'HOW IT WORKS', 'Del beat a la conexión.': 'From beat to connection.', 'Publica': 'Publish', 'El productor prepara el beat y completa su información.': 'The producer prepares the beat and adds its details.', 'Descubre': 'Discover', 'El artista escucha, compara y guarda lo que encaja con su idea.': 'The artist listens, compares and saves what fits their idea.', 'Conecta': 'Connect', 'Cada beat abre una puerta para descubrir al productor y su sonido.': 'Every beat opens a door to discover its producer and sound.',
-  'Tu próximo tema puede empezar aquí.': 'Your next track can start here.', 'Crea tu cuenta, elige tu perfil y empieza a explorar BeatNow.': 'Create an account, choose your profile and start exploring BeatNow.', 'El punto de encuentro entre beats, artistas y productores.': 'Where beats, artists and producers meet.', 'Enlaces del pie': 'Footer links', 'Contacto': 'Contact', 'Beta en evolución': 'Beta in progress',
+  'Tu próximo tema puede empezar aquí.': 'Your next track can start here.', 'Crea tu cuenta, elige tu perfil y empieza a explorar BeatNow.': 'Create an account, choose your profile and start exploring BeatNow.', 'El punto de encuentro entre beats, artistas y productores.': 'Where beats, artists and producers meet.', 'Enlaces del pie': 'Footer links', 'Contacto': 'Contact', 'Beta en evolución': 'Beta in progress', 'BeatNow, volver al inicio': 'BeatNow, back to home', 'Sin gravedad': 'Weightless', 'Otra noche': 'Another night',
 };
 import './LandingPage.css';
 
@@ -90,8 +90,8 @@ export default function LandingPage() {
               </div>
               <div className="catalog-list">
                 <div className="catalog-title"><strong>{t('Beats recientes')}</strong><span>{t('Ver catálogo')}</span></div>
-                <div className="track-row"><span className="cover cover-one" /><strong>Sin gravedad</strong><span>Trap · 142 BPM</span><i>•••</i></div>
-                <div className="track-row"><span className="cover cover-two" /><strong>Otra noche</strong><span>R&B · 94 BPM</span><i>•••</i></div>
+                <div className="track-row"><span className="cover cover-one" /><strong>{t('Sin gravedad')}</strong><span>Trap · 142 BPM</span><i>•••</i></div>
+                <div className="track-row"><span className="cover cover-two" /><strong>{t('Otra noche')}</strong><span>R&B · 94 BPM</span><i>•••</i></div>
                 <div className="track-row"><span className="cover cover-three" /><strong>Distrito</strong><span>Drill · 138 BPM</span><i>•••</i></div>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default function LandingPage() {
                 <span className="cover-label">DARK TRAP</span>
                 <span className="cover-mark">BN</span>
               </div>
-              <div className="phone-track-copy"><div><strong>Sin gravedad</strong><span>nvrth · 142 BPM</span></div><button tabIndex={-1}><PlayIcon /></button></div>
+              <div className="phone-track-copy"><div><strong>{t('Sin gravedad')}</strong><span>nvrth · 142 BPM</span></div><button tabIndex={-1} aria-label={language === 'es' ? 'Reproducir vista previa' : 'Play preview'}><PlayIcon /></button></div>
               <div className="waveform">{Array.from({ length: 22 }).map((_, index) => <i key={index} />)}</div>
               <div className="phone-tags"><span>Trap</span><span>{t('Oscuro')}</span><span>{t('Melódico')}</span></div>
             </div>
@@ -174,7 +174,7 @@ export default function LandingPage() {
 
       <footer className="footer section-shell">
         <div className="footer-main">
-          <a className="footer-brand" href="#inicio" aria-label="BeatNow, volver al inicio">
+          <a className="footer-brand" href="#inicio" aria-label={t('BeatNow, volver al inicio')}>
             <span aria-hidden="true">B</span><strong>BeatNow</strong>
           </a>
           <p>{t('El punto de encuentro entre beats, artistas y productores.')}</p>

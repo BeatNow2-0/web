@@ -41,12 +41,10 @@ export default function Header() {
       </nav>
 
       <div className="header-actions">
-        <label className="language-picker">
-          <span className="visually-hidden">{es ? 'Idioma' : 'Language'}</span>
-          <select aria-label={es ? 'Idioma' : 'Language'} value={language} onChange={(event) => setLanguage(event.target.value as 'en' | 'es')}>
-            <option value="en">EN</option><option value="es">ES</option>
-          </select>
-        </label>
+        <div className="language-switch" role="group" aria-label={es ? 'Seleccionar idioma' : 'Select language'}>
+          <button type="button" aria-pressed={language === 'en'} onClick={() => setLanguage('en')}>EN</button>
+          <button type="button" aria-pressed={language === 'es'} onClick={() => setLanguage('es')}>ES</button>
+        </div>
         <a className="header-cta" href={WEBAPP_URL}>{es ? 'Crear mi cuenta' : 'Create account'}</a>
         <button
           ref={toggleRef}

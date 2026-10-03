@@ -22,6 +22,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       : 'Discover and save beats as an artist. Publish and manage your catalogue as a producer. Join the BeatNow beta for free.';
     const locale = document.querySelector<HTMLMetaElement>('meta[property="og:locale"]');
     if (locale) locale.content = language === 'es' ? 'es_ES' : 'en_US';
+    const socialTitle = document.querySelector<HTMLMetaElement>('meta[property="og:title"]');
+    if (socialTitle) socialTitle.content = language === 'es'
+      ? 'BeatNow — El beat que convierte una idea en canción'
+      : 'BeatNow — The beat that turns an idea into a song';
+    const socialDescription = document.querySelector<HTMLMetaElement>('meta[property="og:description"]');
+    if (socialDescription) socialDescription.content = language === 'es'
+      ? 'Descubre beats como artista y gestiona tu catálogo como productor. Únete a la beta de BeatNow.'
+      : 'Discover beats as an artist and manage your catalogue as a producer. Join the BeatNow beta.';
   }, [language]);
   return <Context.Provider value={{ language, setLanguage }}>{children}</Context.Provider>;
 }
